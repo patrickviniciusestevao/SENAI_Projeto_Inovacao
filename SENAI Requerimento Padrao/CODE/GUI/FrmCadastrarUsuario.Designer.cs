@@ -221,6 +221,7 @@ namespace SENAI_Requerimento_Padrao
 			this.imgFotoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.imgFotoUsuario.TabIndex = 25;
 			this.imgFotoUsuario.TabStop = false;
+			this.imgFotoUsuario.Click += new System.EventHandler(this.imgFotoUsuario_Click);
 			// 
 			// FrmCadastrarUsuario
 			// 
