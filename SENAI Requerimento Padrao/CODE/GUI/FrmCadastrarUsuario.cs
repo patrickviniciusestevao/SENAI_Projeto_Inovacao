@@ -101,6 +101,9 @@ namespace SENAI_Requerimento_Padrao
 		{
 
 			comboFuncao.DataSource = bll.SelecionaTodosFuncoes();
+			
+
+
 			comboFuncao.DisplayMember = "funcao";
 			comboFuncao.ValueMember = "id_funcao";
 

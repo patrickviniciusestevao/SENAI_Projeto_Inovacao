@@ -77,7 +77,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			{
 				bd = new AcessoBancoDados();
 				bd.Conectar();
-				dt = bd.RetDataTable("Select id_funcao, funcao from funcoes");
+				dt = bd.RetDataTable("Select id_funcao, funcao from FUNCAO");
 			}
 			catch (Exception ex)
 			{
