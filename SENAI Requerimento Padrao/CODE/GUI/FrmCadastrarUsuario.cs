@@ -249,64 +249,6 @@ namespace SENAI_Requerimento_Padrao
 			InicializarComboFuncao();
 		}
 
-		private void imgFoto_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog file = new OpenFileDialog();
-			file.Filter = "jpg|*.jpg";
-			if (file.ShowDialog() == DialogResult.OK)
-			{
-				//imgFoto.ImageLocation = file.FileName;
-				imgFotoUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
-
-				string DiretorioComNomeArquivo = file.FileName;
-				string DiretorioArquivo = Path.GetDirectoryName(DiretorioComNomeArquivo);
-				string NomeArquivoComExtensao = Path.GetFileName(DiretorioComNomeArquivo);
-				//string NomeArquivoSemExtensao = Path.GetFileNameWithoutExtension(DiretorioComNomeArquivo);
-
-				long tamanho = new FileInfo(DiretorioComNomeArquivo).Length;
-				tamanho = tamanho / 1000;
-				if (tamanho < 1100)
-				{
-					MessageBox.Show("imagem menor que 1MB, pode gravar");
-
-					string fileName = NomeArquivoComExtensao;
-					string sourcePath = @DiretorioArquivo;
-					string targetPath = @"E:\IMAGES";
-
-					string sourceFile = Path.Combine(sourcePath, fileName);
-					string destFile = Path.Combine(targetPath, fileName);
-
-					MessageBox.Show("../../"+Path.GetDirectoryName(Application.ExecutablePath));
-
-					File.Copy(sourceFile, destFile, true);
-				}
-				else
-				{
-					MessageBox.Show("A imagem deve ser menor que 1MB");
-				}
-				
-
-				/* Para copiar todos os arquivos do diretorio
-				if (Directory.Exists(sourcePath))
-				{
-				
-				string[] files = Directory.GetFiles(sourcePath);
-				foreach (string s in files)
-				{
-					fileName = Path.GetFileName(s);
-					destFile = Path.Combine(targetPath, fileName);
-					File.Copy(s, destFile, true);
-				}
-				
-				}
-				else
-					{
-						MessageBox.Show("Source path does not exist!");
-					}
-
-				*/
-			}
-		}
 
 		private void btnCarregarImagem_Click(object sender, EventArgs e)
 		{
@@ -353,6 +295,65 @@ namespace SENAI_Requerimento_Padrao
 		private void btnLimpar_Click(object sender, EventArgs e)
 		{
 			InicializarComponentes();
+		}
+
+		private void imgFotoUsuario_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog file = new OpenFileDialog();
+			file.Filter = "jpg|*.jpg";
+			if (file.ShowDialog() == DialogResult.OK)
+			{
+				//imgFoto.ImageLocation = file.FileName;
+				imgFotoUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
+
+				string DiretorioComNomeArquivo = file.FileName;
+				string DiretorioArquivo = Path.GetDirectoryName(DiretorioComNomeArquivo);
+				string NomeArquivoComExtensao = Path.GetFileName(DiretorioComNomeArquivo);
+				//string NomeArquivoSemExtensao = Path.GetFileNameWithoutExtension(DiretorioComNomeArquivo);
+
+				long tamanho = new FileInfo(DiretorioComNomeArquivo).Length;
+				tamanho = tamanho / 1000;
+				if (tamanho < 1100)
+				{
+					MessageBox.Show("imagem menor que 1MB, pode gravar");
+
+					string fileName = NomeArquivoComExtensao;
+					string sourcePath = @DiretorioArquivo;
+					string targetPath = @"E:\IMAGES";
+
+					string sourceFile = Path.Combine(sourcePath, fileName);
+					string destFile = Path.Combine(targetPath, fileName);
+
+					MessageBox.Show("../../" + Path.GetDirectoryName(Application.ExecutablePath));
+
+					File.Copy(sourceFile, destFile, true);
+				}
+				else
+				{
+					MessageBox.Show("A imagem deve ser menor que 1MB");
+				}
+
+
+				/* Para copiar todos os arquivos do diretorio
+				if (Directory.Exists(sourcePath))
+				{
+				
+				string[] files = Directory.GetFiles(sourcePath);
+				foreach (string s in files)
+				{
+					fileName = Path.GetFileName(s);
+					destFile = Path.Combine(targetPath, fileName);
+					File.Copy(s, destFile, true);
+				}
+				
+				}
+				else
+					{
+						MessageBox.Show("Source path does not exist!");
+					}
+
+				*/
+			}
 		}
 	}
 }
