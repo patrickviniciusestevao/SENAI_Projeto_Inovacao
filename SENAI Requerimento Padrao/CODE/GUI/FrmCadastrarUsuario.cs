@@ -273,7 +273,9 @@ namespace SENAI_Requerimento_Padrao
 					string sourceFile = Path.Combine(sourcePath, fileName);
 					string destFile = Path.Combine(targetPath, fileName);
 
-					Directory.CreateDirectory(targetPath);
+					MessageBox.Show("../../"+Path.GetDirectoryName(Application.ExecutablePath));
+
+				C: \Users\PATRICK\Desktop\SENAI - Requerimento Padrão\SENAI - Requerimento Padrão\SENAI Requerimento Padrao\SENAI Requerimento Padrao\Resources\imgFotoUsuario.jpg
 
 					File.Copy(sourceFile, destFile, true);
 				}
@@ -281,6 +283,7 @@ namespace SENAI_Requerimento_Padrao
 				{
 					MessageBox.Show("A imagem deve ser menor que 1MB");
 				}
+				
 
 				/* Para copiar todos os arquivos do diretorio
 				if (Directory.Exists(sourcePath))

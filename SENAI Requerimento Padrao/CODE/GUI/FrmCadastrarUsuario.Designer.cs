@@ -53,9 +53,11 @@ namespace SENAI_Requerimento_Padrao
 			// imgFoto
 			// 
 			this.imgFoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(77)))));
+			this.imgFoto.Image = global::SENAI_Requerimento_Padrao.Properties.Resources.imgFotoUsuario;
 			this.imgFoto.Location = new System.Drawing.Point(67, 52);
 			this.imgFoto.Name = "imgFoto";
 			this.imgFoto.Size = new System.Drawing.Size(108, 108);
+			this.imgFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.imgFoto.TabIndex = 0;
 			this.imgFoto.TabStop = false;
 			this.imgFoto.Click += new System.EventHandler(this.imgFoto_Click);
