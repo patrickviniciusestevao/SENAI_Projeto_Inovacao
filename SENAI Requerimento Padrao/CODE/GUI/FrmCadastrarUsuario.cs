@@ -275,8 +275,6 @@ namespace SENAI_Requerimento_Padrao
 
 					MessageBox.Show("../../"+Path.GetDirectoryName(Application.ExecutablePath));
 
-				C: \Users\PATRICK\Desktop\SENAI - Requerimento Padrão\SENAI - Requerimento Padrão\SENAI Requerimento Padrao\SENAI Requerimento Padrao\Resources\imgFotoUsuario.jpg
-
 					File.Copy(sourceFile, destFile, true);
 				}
 				else
