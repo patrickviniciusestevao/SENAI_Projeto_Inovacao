@@ -22,7 +22,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				bd.Conectar();
 				string nome = TrocarAspas(dto);
 				
-				string comando = "INSERT INTO USUARIOS (id_funcao, url_foto_usuario," +
+				string comando = "INSERT INTO USUARIO (id_funcao, url_foto_usuario," +
 					"nome_completo, matricula, email_institucional, senha, situacao)" +
 					"values ("+dto.Id_funcao+",'C:/foto.jpeg','"+dto.Nome_completo+"','"+ dto.Matricula + "','"+ dto.Email_institucional + "','123','"+ dto.Situacao + "')";
 
@@ -61,7 +61,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			{
 				bd = new AcessoBancoDados();
 				bd.Conectar();
-				dt = bd.RetDataTable("Select * from usuarios");
+				dt = bd.RetDataTable("Select * from USUARIO");
 			}
 			catch (Exception ex)
 			{
@@ -95,7 +95,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			{
 				bd = new AcessoBancoDados();
 				bd.Conectar();
-				dr = bd.RetDataReader("Select * from usuarios");
+				dr = bd.RetDataReader("Select * from USUARIO");
 				//return dr;
 			}
 			catch (Exception ex)

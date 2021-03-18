@@ -79,7 +79,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			{
 				bd = new AcessoBancoDados();
 				bd.Conectar();
-				dt = bd.RetDataTable("Select * from funcoes where funcao like '" + dto.Funcao + "%'");
+				dt = bd.RetDataTable("Select * from FUNCAO where funcao like '" + dto.Funcao + "%'");
 			}
 			catch (Exception ex)
 			{
