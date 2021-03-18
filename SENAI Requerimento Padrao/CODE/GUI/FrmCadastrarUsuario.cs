@@ -252,7 +252,7 @@ namespace SENAI_Requerimento_Padrao
 			file.Filter = "jpg|*.jpg";
 			if (file.ShowDialog() == DialogResult.OK)
 			{
-				imgFoto.ImageLocation = file.FileName;
+				//imgFoto.ImageLocation = file.FileName;
 				imgFoto.SizeMode = PictureBoxSizeMode.StretchImage;
 
 				string DiretorioComNomeArquivo = file.FileName;
@@ -274,8 +274,6 @@ namespace SENAI_Requerimento_Padrao
 					string destFile = Path.Combine(targetPath, fileName);
 
 					MessageBox.Show("../../"+Path.GetDirectoryName(Application.ExecutablePath));
-
-				C: \Users\PATRICK\Desktop\SENAI - Requerimento Padrão\SENAI - Requerimento Padrão\SENAI Requerimento Padrao\SENAI Requerimento Padrao\Resources\imgFotoUsuario.jpg
 
 					File.Copy(sourceFile, destFile, true);
 				}

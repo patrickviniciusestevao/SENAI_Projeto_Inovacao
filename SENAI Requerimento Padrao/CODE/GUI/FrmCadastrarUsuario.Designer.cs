@@ -29,7 +29,7 @@ namespace SENAI_Requerimento_Padrao
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.imgFoto = new System.Windows.Forms.PictureBox();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastrarUsuario));
 			this.txtNomeCompleto = new System.Windows.Forms.TextBox();
 			this.txtMatricula = new System.Windows.Forms.TextBox();
 			this.comboFuncao = new System.Windows.Forms.ComboBox();
@@ -45,22 +45,11 @@ namespace SENAI_Requerimento_Padrao
 			this.button1 = new System.Windows.Forms.Button();
 			this.btnLimpar = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
-			((System.ComponentModel.ISupportInitialize)(this.imgFoto)).BeginInit();
+			this.imgFoto = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.btnGravar)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.GridView)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.imgFoto)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// imgFoto
-			// 
-			this.imgFoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(77)))));
-			this.imgFoto.Image = global::SENAI_Requerimento_Padrao.Properties.Resources.imgFotoUsuario;
-			this.imgFoto.Location = new System.Drawing.Point(67, 52);
-			this.imgFoto.Name = "imgFoto";
-			this.imgFoto.Size = new System.Drawing.Size(108, 108);
-			this.imgFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.imgFoto.TabIndex = 0;
-			this.imgFoto.TabStop = false;
-			this.imgFoto.Click += new System.EventHandler(this.imgFoto_Click);
 			// 
 			// txtNomeCompleto
 			// 
@@ -224,6 +213,20 @@ namespace SENAI_Requerimento_Padrao
 			this.panel1.Size = new System.Drawing.Size(720, 2);
 			this.panel1.TabIndex = 24;
 			// 
+			// imgFoto
+			// 
+			this.imgFoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(77)))));
+			this.imgFoto.ErrorImage = null;
+			this.imgFoto.Image = ((System.Drawing.Image)(resources.GetObject("imgFoto.Image")));
+			this.imgFoto.InitialImage = null;
+			this.imgFoto.Location = new System.Drawing.Point(67, 52);
+			this.imgFoto.Name = "imgFoto";
+			this.imgFoto.Size = new System.Drawing.Size(108, 108);
+			this.imgFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.imgFoto.TabIndex = 0;
+			this.imgFoto.TabStop = false;
+			this.imgFoto.Click += new System.EventHandler(this.imgFoto_Click);
+			// 
 			// FrmCadastrarUsuario
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -252,17 +255,15 @@ namespace SENAI_Requerimento_Padrao
 			this.Text = "FrmCadastrarUsuario";
 			this.Activated += new System.EventHandler(this.FrmCadastrarUsuario_Activated);
 			this.Load += new System.EventHandler(this.FrmCadastrarUsuario_Load);
-			((System.ComponentModel.ISupportInitialize)(this.imgFoto)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnGravar)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.imgFoto)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.PictureBox imgFoto;
 		private System.Windows.Forms.TextBox txtNomeCompleto;
 		private System.Windows.Forms.TextBox txtMatricula;
 		private System.Windows.Forms.ComboBox comboFuncao;
@@ -278,5 +279,6 @@ namespace SENAI_Requerimento_Padrao
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button btnLimpar;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.PictureBox imgFoto;
 	}
 }
