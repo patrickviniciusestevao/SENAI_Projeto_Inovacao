@@ -255,7 +255,7 @@ namespace SENAI_Requerimento_Padrao
 			file.Filter = "jpg|*.jpg";
 			if (file.ShowDialog() == DialogResult.OK)
 			{
-				imgFoto.ImageLocation = file.FileName;
+				//imgFoto.ImageLocation = file.FileName;
 				imgFoto.SizeMode = PictureBoxSizeMode.StretchImage;
 
 				string DiretorioComNomeArquivo = file.FileName;
