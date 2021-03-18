@@ -29,7 +29,6 @@ namespace SENAI_Requerimento_Padrao
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastrarUsuario));
 			this.txtNomeCompleto = new System.Windows.Forms.TextBox();
 			this.txtMatricula = new System.Windows.Forms.TextBox();
 			this.comboFuncao = new System.Windows.Forms.ComboBox();
@@ -45,10 +44,10 @@ namespace SENAI_Requerimento_Padrao
 			this.button1 = new System.Windows.Forms.Button();
 			this.btnLimpar = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.imgFoto = new System.Windows.Forms.PictureBox();
+			this.imgFotoUsuario = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.btnGravar)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.GridView)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgFoto)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.imgFotoUsuario)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// txtNomeCompleto
@@ -213,19 +212,15 @@ namespace SENAI_Requerimento_Padrao
 			this.panel1.Size = new System.Drawing.Size(720, 2);
 			this.panel1.TabIndex = 24;
 			// 
-			// imgFoto
+			// imgFotoUsuario
 			// 
-			this.imgFoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(77)))));
-			this.imgFoto.ErrorImage = null;
-			this.imgFoto.Image = ((System.Drawing.Image)(resources.GetObject("imgFoto.Image")));
-			this.imgFoto.InitialImage = null;
-			this.imgFoto.Location = new System.Drawing.Point(67, 52);
-			this.imgFoto.Name = "imgFoto";
-			this.imgFoto.Size = new System.Drawing.Size(108, 108);
-			this.imgFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.imgFoto.TabIndex = 0;
-			this.imgFoto.TabStop = false;
-			this.imgFoto.Click += new System.EventHandler(this.imgFoto_Click);
+			this.imgFotoUsuario.Image = global::SENAI_Requerimento_Padrao.Properties.Resources.imgFotoUsuario;
+			this.imgFotoUsuario.Location = new System.Drawing.Point(67, 52);
+			this.imgFotoUsuario.Name = "imgFotoUsuario";
+			this.imgFotoUsuario.Size = new System.Drawing.Size(108, 108);
+			this.imgFotoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.imgFotoUsuario.TabIndex = 25;
+			this.imgFotoUsuario.TabStop = false;
 			// 
 			// FrmCadastrarUsuario
 			// 
@@ -233,6 +228,7 @@ namespace SENAI_Requerimento_Padrao
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(77)))));
 			this.ClientSize = new System.Drawing.Size(784, 561);
+			this.Controls.Add(this.imgFotoUsuario);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.btnLimpar);
 			this.Controls.Add(this.button1);
@@ -248,7 +244,6 @@ namespace SENAI_Requerimento_Padrao
 			this.Controls.Add(this.comboFuncao);
 			this.Controls.Add(this.txtMatricula);
 			this.Controls.Add(this.txtNomeCompleto);
-			this.Controls.Add(this.imgFoto);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "FrmCadastrarUsuario";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -257,7 +252,7 @@ namespace SENAI_Requerimento_Padrao
 			this.Load += new System.EventHandler(this.FrmCadastrarUsuario_Load);
 			((System.ComponentModel.ISupportInitialize)(this.btnGravar)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgFoto)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.imgFotoUsuario)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -279,6 +274,6 @@ namespace SENAI_Requerimento_Padrao
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button btnLimpar;
 		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.PictureBox imgFoto;
+		private System.Windows.Forms.PictureBox imgFotoUsuario;
 	}
 }

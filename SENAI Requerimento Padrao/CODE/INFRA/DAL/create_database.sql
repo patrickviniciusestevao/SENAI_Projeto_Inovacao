@@ -1,5 +1,5 @@
 create database if not exists DB_Requerimento_Padrao_Oficial;
-
+-- drop database DB_Requerimento_Padrao_Oficial;
 use DB_Requerimento_Padrao_Oficial;
 
 create table if not exists CATEGORIA_CLIENTE ( -- 1
