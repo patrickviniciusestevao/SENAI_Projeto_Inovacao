@@ -85,8 +85,8 @@ namespace SENAI_Requerimento_Padrao
 			lblInfo.Font = new Font("Roboto", 10, FontStyle.Italic);
 
 			//Imagem (FOTO):
-			imgFoto.ImageLocation = "E:\\IMAGES\\imgFotoUsuario.jpg";
-			imgFoto.SizeMode = PictureBoxSizeMode.StretchImage;
+			imgFotoUsuario.ImageLocation = "E:\\IMAGES\\imgFotoUsuario.jpg";
+			imgFotoUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
 
 			//combos:
 			//inicializar combo funcao
@@ -254,8 +254,8 @@ namespace SENAI_Requerimento_Padrao
 		{
 			try
 			{
-				imgFoto.Image = Image.FromFile("E:\\IMAGES\\"+ txtNomeCompleto.Text);
-				imgFoto.SizeMode = PictureBoxSizeMode.StretchImage;
+				imgFotoUsuario.Image = Image.FromFile("E:\\IMAGES\\"+ txtNomeCompleto.Text);
+				imgFotoUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
 			}
 			catch (Exception ex)
 			{
@@ -304,7 +304,7 @@ namespace SENAI_Requerimento_Padrao
 			if (file.ShowDialog() == DialogResult.OK)
 			{
 				//imgFoto.ImageLocation = file.FileName;
-				imgFoto.SizeMode = PictureBoxSizeMode.StretchImage;
+				imgFotoUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
 
 				string DiretorioComNomeArquivo = file.FileName;
 				string DiretorioArquivo = Path.GetDirectoryName(DiretorioComNomeArquivo);

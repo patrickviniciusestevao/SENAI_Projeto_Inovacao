@@ -222,13 +222,13 @@
 			// 
 			// imgFoto
 			// 
-			this.imgFoto.Image = global::SENAI_Requerimento_Padrao.Properties.Resources.imgFotoUsuario;
-			this.imgFoto.Location = new System.Drawing.Point(67, 52);
-			this.imgFoto.Name = "imgFotoUsuario";
-			this.imgFoto.Size = new System.Drawing.Size(108, 108);
-			this.imgFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.imgFoto.TabIndex = 25;
-			this.imgFoto.TabStop = false;
+			this.imgFotoUsuario.Image = global::SENAI_Requerimento_Padrao.Properties.Resources.imgFotoUsuario;
+			this.imgFotoUsuario.Location = new System.Drawing.Point(67, 52);
+			this.imgFotoUsuario.Name = "imgFotoUsuario";
+			this.imgFotoUsuario.Size = new System.Drawing.Size(108, 108);
+			this.imgFotoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.imgFotoUsuario.TabIndex = 25;
+			this.imgFotoUsuario.TabStop = false;
 			// 
 			// FrmCadastrarUsuario
 			// 
@@ -251,7 +251,7 @@
 			this.Controls.Add(this.comboFuncao);
 			this.Controls.Add(this.txtMatricula);
 			this.Controls.Add(this.txtNomeCompleto);
-			this.Controls.Add(this.imgFoto);
+			this.Controls.Add(this.imgFotoUsuario);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "FrmCadastrarUsuario";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -260,7 +260,7 @@
 			this.Load += new System.EventHandler(this.FrmCadastrarUsuario_Load);
 			((System.ComponentModel.ISupportInitialize)(this.btnGravar)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgFoto)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.imgFotoUsuario)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
