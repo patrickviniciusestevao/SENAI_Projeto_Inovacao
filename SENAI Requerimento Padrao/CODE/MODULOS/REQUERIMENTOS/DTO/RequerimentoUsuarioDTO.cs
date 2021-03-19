@@ -1,4 +1,6 @@
-﻿namespace SENAI_Requerimento_Padrao.CODE.DTO
+﻿using System;
+
+namespace SENAI_Requerimento_Padrao.CODE.DTO
 {
     class RequerimentoUsuarioDTO
     {
