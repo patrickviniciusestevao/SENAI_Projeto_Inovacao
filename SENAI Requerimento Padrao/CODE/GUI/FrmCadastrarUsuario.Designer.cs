@@ -181,93 +181,88 @@
             this.lblInfo.TabIndex = 18;
             this.lblInfo.Text = "* Clique sobre o nome para detalhar e adicionar dados de telefone, endereço e sen" +
     "ha.";
-            // 
-            // btnCarregarImagem
-            // 
-            this.btnCarregarImagem.Location = new System.Drawing.Point(98, 445);
-            this.btnCarregarImagem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCarregarImagem.Name = "btnCarregarImagem";
-            this.btnCarregarImagem.Size = new System.Drawing.Size(123, 32);
-            this.btnCarregarImagem.TabIndex = 19;
-            this.btnCarregarImagem.Text = "Carregar Imagem";
-            this.btnCarregarImagem.UseVisualStyleBackColor = true;
-            this.btnCarregarImagem.Click += new System.EventHandler(this.btnCarregarImagem_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(295, 433);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 31);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Location = new System.Drawing.Point(606, 671);
-            this.btnLimpar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(123, 32);
-            this.btnLimpar.TabIndex = 21;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.Location = new System.Drawing.Point(37, 660);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(823, 3);
-            this.panel1.TabIndex = 24;
-            // 
-            // imgFotoUsuario
-            // 
-            this.imgFotoUsuario.Location = new System.Drawing.Point(77, 69);
-            this.imgFotoUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.imgFotoUsuario.Name = "imgFotoUsuario";
-            this.imgFotoUsuario.Size = new System.Drawing.Size(123, 144);
-            this.imgFotoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgFotoUsuario.TabIndex = 25;
-            this.imgFotoUsuario.TabStop = false;
-            // 
-            // FrmCadastrarUsuario
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(77)))));
-            this.ClientSize = new System.Drawing.Size(896, 748);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnLimpar);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnCarregarImagem);
-            this.Controls.Add(this.lblInfo);
-            this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.btnCadastrarFuncao);
-            this.Controls.Add(this.btnFechar);
-            this.Controls.Add(this.GridView);
-            this.Controls.Add(this.btnGravar);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.comboSituacao);
-            this.Controls.Add(this.comboFuncao);
-            this.Controls.Add(this.txtMatricula);
-            this.Controls.Add(this.txtNomeCompleto);
-            this.Controls.Add(this.imgFotoUsuario);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FrmCadastrarUsuario";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmCadastrarUsuario";
-            this.Activated += new System.EventHandler(this.FrmCadastrarUsuario_Activated);
-            this.Load += new System.EventHandler(this.FrmCadastrarUsuario_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.btnGravar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgFotoUsuario)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			// 
+			// btnCarregarImagem
+			// 
+			this.btnCarregarImagem.Location = new System.Drawing.Point(86, 334);
+			this.btnCarregarImagem.Name = "btnCarregarImagem";
+			this.btnCarregarImagem.Size = new System.Drawing.Size(108, 24);
+			this.btnCarregarImagem.TabIndex = 19;
+			this.btnCarregarImagem.Text = "Carregar Imagem";
+			this.btnCarregarImagem.UseVisualStyleBackColor = true;
+			this.btnCarregarImagem.Click += new System.EventHandler(this.btnCarregarImagem_Click);
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(258, 325);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.TabIndex = 20;
+			this.button1.Text = "button1";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// btnLimpar
+			// 
+			this.btnLimpar.Location = new System.Drawing.Point(530, 503);
+			this.btnLimpar.Name = "btnLimpar";
+			this.btnLimpar.Size = new System.Drawing.Size(108, 24);
+			this.btnLimpar.TabIndex = 21;
+			this.btnLimpar.Text = "Limpar";
+			this.btnLimpar.UseVisualStyleBackColor = true;
+			this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+			// 
+			// panel1
+			// 
+			this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+			this.panel1.Location = new System.Drawing.Point(32, 495);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(720, 2);
+			this.panel1.TabIndex = 24;
+			// 
+			// imgFoto
+			// 
+			this.imgFoto.Image = global::SENAI_Requerimento_Padrao.Properties.Resources.imgFotoUsuario;
+			this.imgFoto.Location = new System.Drawing.Point(67, 52);
+			this.imgFoto.Name = "imgFotoUsuario";
+			this.imgFoto.Size = new System.Drawing.Size(108, 108);
+			this.imgFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.imgFoto.TabIndex = 25;
+			this.imgFoto.TabStop = false;
+			// 
+			// FrmCadastrarUsuario
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(77)))));
+			this.ClientSize = new System.Drawing.Size(784, 561);
+			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.btnLimpar);
+			this.Controls.Add(this.button1);
+			this.Controls.Add(this.btnCarregarImagem);
+			this.Controls.Add(this.lblInfo);
+			this.Controls.Add(this.lblTitulo);
+			this.Controls.Add(this.btnCadastrarFuncao);
+			this.Controls.Add(this.btnFechar);
+			this.Controls.Add(this.GridView);
+			this.Controls.Add(this.btnGravar);
+			this.Controls.Add(this.txtEmail);
+			this.Controls.Add(this.comboSituacao);
+			this.Controls.Add(this.comboFuncao);
+			this.Controls.Add(this.txtMatricula);
+			this.Controls.Add(this.txtNomeCompleto);
+			this.Controls.Add(this.imgFoto);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Name = "FrmCadastrarUsuario";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "FrmCadastrarUsuario";
+			this.Activated += new System.EventHandler(this.FrmCadastrarUsuario_Activated);
+			this.Load += new System.EventHandler(this.FrmCadastrarUsuario_Load);
+			((System.ComponentModel.ISupportInitialize)(this.btnGravar)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.imgFoto)).EndInit();
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
