@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CODE\MODULOS\REQUERIMENTOS\BLL\" />
+    <Folder Include="CODE\MODULOS\CAMPOS_ADICIONAIS\" />
   </ItemGroup>
 
 </Project>

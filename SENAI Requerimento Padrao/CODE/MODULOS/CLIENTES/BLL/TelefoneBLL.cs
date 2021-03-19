@@ -59,7 +59,28 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
         public void Alterar(TelefoneDTO telefoneDTO)
         {
-            
+            try
+            {
+                bd = new AcessoBancoDados();
+                bd.Conectar();
+
+                string comando = "UPDATE TELEFONE set " +
+                    "id_cliente = '" + telefoneDTO.IdCliente + "', " +
+                    "numero_telefone = '" + telefoneDTO.NumeroTelefone + "', " +
+                    "whatsapp = '" + telefoneDTO.Whatsapp + "', " +
+                    "categoria_telefone = '" + telefoneDTO.CategoriaTelefone+ "' " + 
+                    "where id_endereco = '" + telefoneDTO.IdTelefone+ "'";
+
+                bd.ExecutarComandoSQL(comando);
+            }
+            catch (Exception excecao)
+            {
+                MessageBox.Show("Erro ao alterar: " + excecao.ToString());
+            }
+            finally
+            {
+                bd = null;
+            }
         }
 
         public DataTable SelecionarTodos()
@@ -79,6 +100,24 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
             finally
             {
                 bd = null;
+            }
+
+            return dataTable;
+        }
+
+        public DataTable SelecionarComCondicao(string condicao)
+        {
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                bd = new AcessoBancoDados();
+                bd.Conectar();
+                dataTable = bd.RetDataTable("Select * from TELEFONE where " + condicao);
+            }
+            catch (Exception excecao)
+            {
+                MessageBox.Show("Erro ao selecionar com condição: " + excecao.ToString());
             }
 
             return dataTable;
