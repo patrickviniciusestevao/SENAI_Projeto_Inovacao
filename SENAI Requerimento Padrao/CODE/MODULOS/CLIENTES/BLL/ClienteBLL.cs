@@ -17,16 +17,6 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				bd = new AcessoBancoDados();
 				bd.Conectar();
 				
-				// Verificando se os dados não estão vazios
-				if(clienteDTO.IdCategoria == 0 || clienteDTO.NomeCompleto == "" ||
-					clienteDTO.Matricula == "" || clienteDTO.Cpf == "" ||
-					clienteDTO.Rg == "" || clienteDTO.OrgaoEmissor == "" ||
-					clienteDTO.Email == "" || clienteDTO.Situacao == "")
-                {
-					MessageBox.Show("Falta campos a serem preenchidos!");
-					return;
-                }
-
 				// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
 				string nome = this.TrocarAspas(clienteDTO.NomeCompleto);
 				string nome_social = this.TrocarAspas(clienteDTO.NomeSocial);
@@ -80,16 +70,6 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
             {
 				bd = new AcessoBancoDados();
 				bd.Conectar();
-
-				// Verificando se os dados não estão vazios
-				if (clienteDTO.IdCategoria == 0 || clienteDTO.NomeCompleto == "" ||
-					clienteDTO.Matricula == "" || clienteDTO.Cpf == "" ||
-					clienteDTO.Rg == "" || clienteDTO.OrgaoEmissor == "" ||
-					clienteDTO.Email == "" || clienteDTO.Situacao == "")
-				{
-					MessageBox.Show("Falta campos a serem preenchidos!");
-					return;
-				}
 
 				// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
 				string nome = this.TrocarAspas(clienteDTO.NomeCompleto);

@@ -17,16 +17,6 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
                 bd = new AcessoBancoDados();
                 bd.Conectar();
 
-                // Verificando se o campo está preenchido
-                if (categoriaClienteDTO.CategoriaCliente == "")
-                {
-                    MessageBox.Show("O campo não foi preenchido!");
-                    return;
-                }
-
-                // Retirando os espaços e transformando em minúscula, para comparações futuras
-                categoriaClienteDTO.CategoriaCliente = categoriaClienteDTO.CategoriaCliente.Trim().ToLower();
-
                 int jaExisteUmaCategoria = this.SelecionarComCondicao("categoria_cliente = '" + categoriaClienteDTO.CategoriaCliente + "'").Rows.Count;
 
                 // Comparando se já existe uma categoria
@@ -80,16 +70,6 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
             {
                 bd = new AcessoBancoDados();
                 bd.Conectar();
-
-                // Verificando se o campo está preenchido
-                if (categoriaClienteDTO.CategoriaCliente == "")
-                {
-                    MessageBox.Show("O campo não foi preenchido!");
-                    return;
-                }
-
-                // Retirando os espaços e transformando em minúscula, para comparações futuras
-                categoriaClienteDTO.CategoriaCliente = categoriaClienteDTO.CategoriaCliente.Trim().ToLower();
 
                 int jaExisteUmaCategoria = this.SelecionarComCondicao("categoria_cliente = '" + categoriaClienteDTO.CategoriaCliente + "'").Rows.Count;
 
