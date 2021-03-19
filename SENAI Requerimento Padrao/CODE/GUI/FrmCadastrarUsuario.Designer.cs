@@ -214,13 +214,13 @@
 			// 
 			// imgFoto
 			// 
-			this.imgFotoUsuario.Image = global::SENAI_Requerimento_Padrao.Properties.Resources.imgFotoUsuario;
-			this.imgFotoUsuario.Location = new System.Drawing.Point(67, 52);
-			this.imgFotoUsuario.Name = "imgFotoUsuario";
-			this.imgFotoUsuario.Size = new System.Drawing.Size(108, 108);
-			this.imgFotoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.imgFotoUsuario.TabIndex = 25;
-			this.imgFotoUsuario.TabStop = false;
+			this.imgFoto.Image = global::SENAI_Requerimento_Padrao.Properties.Resources.imgFotoUsuario;
+			this.imgFoto.Location = new System.Drawing.Point(67, 52);
+			this.imgFoto.Name = "imgFotoUsuario";
+			this.imgFoto.Size = new System.Drawing.Size(108, 108);
+			this.imgFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.imgFoto.TabIndex = 25;
+			this.imgFoto.TabStop = false;
 			// 
 			// FrmCadastrarUsuario
 			// 
