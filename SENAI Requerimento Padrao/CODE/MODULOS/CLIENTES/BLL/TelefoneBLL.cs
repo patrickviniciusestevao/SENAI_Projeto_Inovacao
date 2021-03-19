@@ -4,13 +4,13 @@ using System.Data;
 using SENAI_Requerimento_Padrao.CODE.DTO;
 using SENAI_Requerimento_Padrao.CODE.DAL;
 
-namespace SENAI___Requerimento_padrão.CODE.Modulos.Clientes.BLL
+namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
     class TelefoneBLL
     {
         AcessoBancoDados bd;
 
-        public void Inserir(TelefoneDTO dto)
+        public void Inserir(TelefoneDTO telefoneDTO)
         {
             try
             {
@@ -18,15 +18,17 @@ namespace SENAI___Requerimento_padrão.CODE.Modulos.Clientes.BLL
                 bd.Conectar();
 
                 string comando = "INSERT INTO TELEFONE(id_cliente, numero_telefone, whatsapp, categoria_telefone) " +
-                    "values ('" + dto.IdCliente + "', '" + dto.NumeroTelefone+ "', '" + dto.Whatsapp+ "', " +
-                    "'" + dto.CategoriaTelefone + "')";
+                    "values ('" + telefoneDTO.IdCliente + "', " +
+                    "'" + telefoneDTO.NumeroTelefone + "', " +
+                    "'" + telefoneDTO.Whatsapp + "', " +
+                    "'" + telefoneDTO.CategoriaTelefone + "')";
 
                 bd.ExecutarComandoSQL(comando);
 
             }
-            catch (Exception ex)
+            catch (Exception excecao)
             {
-                MessageBox.Show("Erro ao tentar inserir: " + ex);
+                MessageBox.Show("Erro ao tentar inserir: " + excecao);
             }
             finally
             {
@@ -34,31 +36,52 @@ namespace SENAI___Requerimento_padrão.CODE.Modulos.Clientes.BLL
             }
         }
 
-        public void Excluir(TelefoneDTO dto)
+        public void Excluir(TelefoneDTO telefoneDTO)
         {
-            bd = new AcessoBancoDados();
-            bd.Conectar();
-            string comando = "DELETE FROM TELEFONE " +
-                "where id_telefone = '" + dto.IdTelefone + "'";
-            bd.ExecutarComandoSQL(comando);
+            try
+            {
+                bd = new AcessoBancoDados();
+                bd.Conectar();
+                string comando = "DELETE FROM TELEFONE " +
+                    "where id_telefone = '" + telefoneDTO.IdTelefone + "'";
+                bd.ExecutarComandoSQL(comando);
+            }
+            catch (Exception excecao)
+            {
+                MessageBox.Show("Erro ao tentar excluir: " + excecao.ToString());
+            }
+            finally
+            {
+                bd = null;
+            }
+
+        }
+
+        public void Alterar(TelefoneDTO telefoneDTO)
+        {
+            
         }
 
         public DataTable SelecionarTodos()
         {
-            DataTable dt = new DataTable();
+            DataTable dataTable = new DataTable();
 
             try
             {
                 bd = new AcessoBancoDados();
                 bd.Conectar();
-                dt = bd.RetDataTable("Select * from TELEFONE");
+                dataTable = bd.RetDataTable("Select * from TELEFONE");
             }
-            catch (Exception ex)
+            catch (Exception excecao)
             {
-                MessageBox.Show("Erro ao tentar Selecionar todos os telefones: " + ex);
+                MessageBox.Show("Erro ao tentar Selecionar todos os telefones: " + excecao);
+            }
+            finally
+            {
+                bd = null;
             }
 
-            return dt;
+            return dataTable;
         }
     }
 }

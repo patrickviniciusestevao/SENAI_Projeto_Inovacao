@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using SENAI_Requerimento_Padrao.CODE.DTO;
 using SENAI_Requerimento_Padrao.CODE.DAL;
 
-namespace SENAI_Requerimento_Padrao.CODE.Modulos.Clientes.BLL
+namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
     class EnderecoBLL
     {
@@ -16,16 +16,6 @@ namespace SENAI_Requerimento_Padrao.CODE.Modulos.Clientes.BLL
             {
                 bd = new AcessoBancoDados();
                 bd.Conectar();
-
-                // Verificando se o campo está preenchido
-                if (enderecoDTO.IdCliente == 0 || enderecoDTO.Logradouro == "" ||
-                    enderecoDTO.Numero == "" || enderecoDTO.Cep == "" ||
-                    enderecoDTO.Bairro == "" || enderecoDTO.Cidade == "" || 
-                    enderecoDTO.Uf == "" || enderecoDTO.CategoriaEndereco == "")
-                {
-                    MessageBox.Show("Falta campos a serem preenchidos!");
-                    return;
-                }
 
                 string comando = "INSERT INTO ENDERECO (id_cliente, logradouro, numero, cep, bairro, complemento, cidade, uf, categoria_endereco) " +
                     "values ('" + enderecoDTO.IdCliente + "', " +
@@ -77,16 +67,6 @@ namespace SENAI_Requerimento_Padrao.CODE.Modulos.Clientes.BLL
             {
                 bd = new AcessoBancoDados();
                 bd.Conectar();
-
-                // Verificando se o campo está preenchido
-                if (enderecoDTO.IdCliente == 0 || enderecoDTO.Logradouro == "" ||
-                    enderecoDTO.Numero == "" || enderecoDTO.Cep == "" ||
-                    enderecoDTO.Bairro == "" || enderecoDTO.Cidade == "" ||
-                    enderecoDTO.Uf == "" || enderecoDTO.CategoriaEndereco == "")
-                {
-                    MessageBox.Show("Falta campos a serem preenchidos!");
-                    return;
-                }
 
                 string comando = "UPDATE ENDERECO set " +
                     "id_cliente = '" + enderecoDTO.IdCliente + "', " +
