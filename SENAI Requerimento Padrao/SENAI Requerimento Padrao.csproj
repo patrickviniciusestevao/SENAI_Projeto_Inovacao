@@ -27,8 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CODE\MODULOS\CLIENTES\BLL\" />
-    <Folder Include="CODE\MODULOS\CLIENTES\DTO\" />
     <Folder Include="CODE\MODULOS\REQUERIMENTOS\" />
   </ItemGroup>
 
