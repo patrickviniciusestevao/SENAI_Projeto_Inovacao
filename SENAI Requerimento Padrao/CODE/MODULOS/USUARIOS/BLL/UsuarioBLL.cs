@@ -24,7 +24,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				
 				string comando = "INSERT INTO USUARIO (id_funcao, url_foto_usuario," +
 					"nome_completo, matricula, email_institucional, senha, situacao)" +
-					"values ("+dto.Id_funcao+",'C:/foto.jpeg','"+dto.Nome_completo+"','"+ dto.Matricula + "','"+ dto.Email_institucional + "','123','"+ dto.Situacao + "')";
+					"values ("+dto.IdFuncao+",'C:/foto.jpeg','"+dto.NomeCompleto+"','"+ dto.Matricula + "','"+ dto.EmailInstitucional + "','123','"+ dto.Situacao + "')";
 
 				MessageBox.Show(comando);
 				bd.ExecutarComandoSQL(comando);
@@ -50,7 +50,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
 		private string TrocarAspas(UsuarioDTO dto)
 		{
-			string resultado = dto.Nome_completo.Replace("'", "''");
+			string resultado = dto.NomeCompleto.Replace("'", "''");
 			return resultado;
 		}
 

@@ -55,7 +55,7 @@ namespace SENAI_Requerimento_Padrao
 					}
 					else
 					{
-						dto.Nivel_permissao = Int32.Parse(comboNivelPermissao.Text);
+						dto.NivelPermissao = Int32.Parse(comboNivelPermissao.Text);
 
 						if (id_funcao_PK == "")
 						{
@@ -75,7 +75,7 @@ namespace SENAI_Requerimento_Padrao
 						}
 						else if (Int32.Parse(id_funcao_PK) > 0)
 						{
-							dto.Id_funcao = Int32.Parse(id_funcao_PK);
+							dto.IdFuncao = Int32.Parse(id_funcao_PK);
 							bll.Alterar(dto);
 							MessageBox.Show("a função foi alterada para: " + (dto.Funcao) + ", com sucesso!", "Alterado com Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 						}
@@ -237,7 +237,7 @@ namespace SENAI_Requerimento_Padrao
 				DataRowView dr = (DataRowView)gridFuncoes.Rows[indiceselecionado].DataBoundItem;
 				if (dr != null)
 				{
-					dto.Id_funcao = Int32.Parse(dr["id_funcao"].ToString());
+					dto.IdFuncao = Int32.Parse(dr["id_funcao"].ToString());
 					var result = MessageBox.Show("Deseja realmente excluir a função: " + (dr["funcao"].ToString()) + "?", "Exclusão de Função", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 					if (result == System.Windows.Forms.DialogResult.Yes)
 					{

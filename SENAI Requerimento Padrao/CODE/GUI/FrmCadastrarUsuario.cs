@@ -100,12 +100,12 @@ namespace SENAI_Requerimento_Padrao
 		private void InicializarComboFuncao()
 		{
 
-			comboFuncao.DataSource = bll.SelecionaTodosFuncoes();
+			//comboFuncao.DataSource = bll.SelecionaTodosFuncoes();
 			
 
 
-			comboFuncao.DisplayMember = "funcao";
-			comboFuncao.ValueMember = "id_funcao";
+			//comboFuncao.DisplayMember = "funcao";
+			//comboFuncao.ValueMember = "id_funcao";
 
 			//comboFuncao.Items.Insert(0, "Selecione o Produto");
 			//comboFuncao.Refresh(); //faz uma nova busca no BD para preencher os valores da cb de departamentos.
@@ -167,7 +167,7 @@ namespace SENAI_Requerimento_Padrao
 			
 			if (txtNomeCompleto.Text != "")
 			{
-				dto.Nome_completo = txtNomeCompleto.Text;
+				dto.NomeCompleto = txtNomeCompleto.Text;
 
 				if (txtMatricula.Text != "")
 				{
@@ -175,12 +175,12 @@ namespace SENAI_Requerimento_Padrao
 
 					if (comboFuncao.Text != "Selecione Função")
 					{
-						dto.Id_funcao = Int32.Parse(comboFuncao.SelectedValue.ToString());
+						dto.IdFuncao = Int32.Parse(comboFuncao.SelectedValue.ToString());
 						dto.Situacao = comboSituacao.Text;
 
 						if (txtEmail.Text != "")
 						{
-							dto.Email_institucional = txtEmail.Text;
+							dto.EmailInstitucional = txtEmail.Text;
 
 							if (id_usuario_PK == "0")
 							{
@@ -189,7 +189,7 @@ namespace SENAI_Requerimento_Padrao
 								//if (gridFuncoes.Rows.Count == 0)
 								//{
 								bll.Inserir(dto);
-								MessageBox.Show("O usuário: " + (dto.Nome_completo) + ", foi cadastrado com sucesso!", "Inserido com Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+								MessageBox.Show("O usuário: " + (dto.NomeCompleto) + ", foi cadastrado com sucesso!", "Inserido com Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 								//}
 								//else
 								//{
@@ -198,7 +198,7 @@ namespace SENAI_Requerimento_Padrao
 							}
 							else if (Int32.Parse(id_usuario_PK) > 0)
 							{
-								dto.Id_usuario = Int32.Parse(id_usuario_PK);
+								dto.IdUsuario = Int32.Parse(id_usuario_PK);
 								bll.Alterar(dto);
 								MessageBox.Show("O usuário foi alterado com sucesso!", "Alterado com Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 							}

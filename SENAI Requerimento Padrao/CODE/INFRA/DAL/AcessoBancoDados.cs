@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace SENAI_Requerimento_Padrao.CODE.DAL
 {
@@ -17,11 +18,11 @@ namespace SENAI_Requerimento_Padrao.CODE.DAL
 		private MySqlDataReader dr;
 		private MySqlCommandBuilder cb;
 
-		private String server = "127.0.0.1";
-		private String user = "root";
-		private String database = "DB_Requerimento_Padrao_Oficial";
-		private String port = "3306";
-		private String password = "root";
+		private String server = "https://mysql743.umbler.com";
+		private String user = "devsenai";
+		private String database = "db_requerimento";
+		private String port = "41890";
+		private String password = "JQAU_57l_B#ob";
 
 		public void Conectar()
 		{

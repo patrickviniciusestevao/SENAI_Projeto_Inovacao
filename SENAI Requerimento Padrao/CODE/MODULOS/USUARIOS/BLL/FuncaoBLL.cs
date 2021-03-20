@@ -18,7 +18,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				bd = new AcessoBancoDados();
 				bd.Conectar();
 				string funcao = TrocarAspas(dto);
-				string comando = "INSERT INTO FUNCAO (funcao, nivel_permissao) values ('" + funcao + "','" + dto.Nivel_permissao + "')";
+				string comando = "INSERT INTO FUNCAO (funcao, nivel_permissao) values ('" + funcao + "','" + dto.NivelPermissao + "')";
 				bd.ExecutarComandoSQL(comando);
 
 			}
@@ -36,7 +36,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		{
 			bd = new AcessoBancoDados();
 			bd.Conectar();
-			string comando = "DELETE FROM FUNCAO where id_funcao = '" + dto.Id_funcao + "'";
+			string comando = "DELETE FROM FUNCAO where id_funcao = '" + dto.IdFuncao + "'";
 			bd.ExecutarComandoSQL(comando);
 		}
 
@@ -45,7 +45,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			bd = new AcessoBancoDados();
 			bd.Conectar();
 			string funcao = TrocarAspas(dto);
-			string comando = "UPDATE FUNCAO set funcao = '" + funcao + "', nivel_permissao = '" + dto.Nivel_permissao + "' where id_funcao = '" + dto.Id_funcao + "'";
+			string comando = "UPDATE FUNCAO set funcao = '" + funcao + "', nivel_permissao = '" + dto.NivelPermissao + "' where id_funcao = '" + dto.IdFuncao + "'";
 			bd.ExecutarComandoSQL(comando);
 		}
 
@@ -56,7 +56,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			{
 				bd = new AcessoBancoDados();
 				bd.Conectar();
-				dt = bd.RetDataTable("Select id_funcao, funcao, nivel_permissao from FUNCAO");
+				dt = bd.RetDataTable("Select * from FUNCAO");
 			}
 			catch (Exception ex)
 			{
