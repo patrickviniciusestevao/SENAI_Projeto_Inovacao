@@ -77,11 +77,12 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			{
 				bd = new AcessoBancoDados();
 				bd.Conectar();
-				dt = bd.RetDataTable("Select id_funcao, funcao from FUNCAO");
+				dt = bd.RetDataTable("Select * from FUNCAO");
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine("Erro ao tentar Selecionar todas as funções: " + ex);
+				MessageBox.Show(ex.ToString());
 			}
 
 			return dt;
@@ -89,8 +90,6 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
 		public MySqlDataReader SelecionaTodosUsuariosDATAREADER()
 		{
-
-			
 			try
 			{
 				bd = new AcessoBancoDados();
@@ -102,7 +101,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			{
 				Console.WriteLine("Erro ao tentar selecionar todos os usuários: " + ex);
 			}
-				return dr;
+			return dr;
 		}
 	}
 }

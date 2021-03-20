@@ -239,7 +239,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(77)))));
-            this.ClientSize = new System.Drawing.Size(896, 748);
+            this.ClientSize = new System.Drawing.Size(1050, 967);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.button1);

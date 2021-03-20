@@ -100,12 +100,10 @@ namespace SENAI_Requerimento_Padrao
 		private void InicializarComboFuncao()
 		{
 
-			//comboFuncao.DataSource = bll.SelecionaTodosFuncoes();
-			
+			comboFuncao.DataSource = bll.SelecionaTodosFuncoes();
 
-
-			//comboFuncao.DisplayMember = "funcao";
-			//comboFuncao.ValueMember = "id_funcao";
+			comboFuncao.DisplayMember = "funcao";
+			comboFuncao.ValueMember = "id_funcao";
 
 			//comboFuncao.Items.Insert(0, "Selecione o Produto");
 			//comboFuncao.Refresh(); //faz uma nova busca no BD para preencher os valores da cb de departamentos.

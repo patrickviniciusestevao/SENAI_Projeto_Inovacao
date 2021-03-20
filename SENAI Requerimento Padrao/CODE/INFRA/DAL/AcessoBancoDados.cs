@@ -18,7 +18,7 @@ namespace SENAI_Requerimento_Padrao.CODE.DAL
 		private MySqlDataReader dr;
 		private MySqlCommandBuilder cb;
 
-		private String server = "https://mysql743.umbler.com";
+		private String server = "mysql743.umbler.com";
 		private String user = "devsenai";
 		private String database = "db_requerimento";
 		private String port = "41890";
