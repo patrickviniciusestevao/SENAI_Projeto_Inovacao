@@ -96,7 +96,6 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
             {
 				bd = null;
             }
-			
 		}
 		
 		public DataTable SelecionarTodos()

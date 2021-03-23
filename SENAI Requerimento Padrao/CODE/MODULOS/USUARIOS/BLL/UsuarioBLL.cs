@@ -12,26 +12,32 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 	class UsuarioBLL
 	{
 		AcessoBancoDados bd;
-		MySqlDataReader dr;
 
-		public void Inserir(UsuarioDTO dto)
+		public void Inserir(UsuarioDTO usuarioDTO)
 		{
 			try
 			{
 				bd = new AcessoBancoDados();
 				bd.Conectar();
-				string nome = TrocarAspas(dto);
+
+				string nomeCompleto = TrocarAspas(usuarioDTO.NomeCompleto);
 				
 				string comando = "INSERT INTO USUARIO (id_funcao, url_foto_usuario," +
 					"nome_completo, matricula, email_institucional, senha, situacao)" +
-					"values ("+dto.IdFuncao+",'C:/foto.jpeg','"+dto.NomeCompleto+"','"+ dto.Matricula + "','"+ dto.EmailInstitucional + "','123','"+ dto.Situacao + "')";
+					"values (" +
+						usuarioDTO.IdFuncao + "," +
+						"'C:/foto.jpeg'," +
+						"'"+ nomeCompleto + "'," +
+						"'"+ usuarioDTO.Matricula + "'," +
+						"'"+ usuarioDTO.EmailInstitucional + "'," +
+						"'123'," +
+						"'"+ usuarioDTO.Situacao + "')";
 
-				MessageBox.Show(comando);
 				bd.ExecutarComandoSQL(comando);
 			}
-			catch (Exception ex)
+			catch (Exception excecao)
 			{
-				Console.WriteLine(ex);
+				MessageBox.Show("Erro ao inserir: " + excecao.ToString());
 			}
 			finally
 			{
@@ -39,22 +45,67 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			}
 		}
 
-		public void Excluir(UsuarioDTO dto)
+		public void Excluir(UsuarioDTO usuarioDTO)
 		{
-
+			try
+			{
+				bd = new AcessoBancoDados();
+				bd.Conectar();
+				string comando = "" +
+					"DELETE FROM USUARIO where id_cliente = '" + usuarioDTO.IdUsuario + "'";
+				bd.ExecutarComandoSQL(comando);
+			}
+			catch (Exception excecao)
+			{
+				MessageBox.Show("Erro ao tentar Excluir: " + excecao.ToString());
+			}
+			finally
+			{
+				bd = null;
+			}
 		}
-		public void Alterar(UsuarioDTO dto)
+		public void Alterar(UsuarioDTO usuarioDTO)
 		{
+			try
+			{
+				bd = new AcessoBancoDados();
+				bd.Conectar();
 
+				// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
+				string nome = this.TrocarAspas(clienteDTO.NomeCompleto);
+				string nome_social = this.TrocarAspas(clienteDTO.NomeSocial);
+
+				string comando =
+					"UPDATE CLIENTE set " +
+					"id_categoria_cliente = '" + clienteDTO.IdCategoria + "'," +
+					" url_foto_usuario = '" + clienteDTO.Url + "'," +
+					" nome_completo = '" + nome + "'," +
+					" matricula = '" + clienteDTO.Matricula + "'," +
+					" nome_social = '" + nome_social + "'," +
+					" cpf = '" + clienteDTO.Cpf + "'," +
+					" rg = '" + clienteDTO.Rg + "'," +
+					" orgao_emissor = '" + clienteDTO.OrgaoEmissor + "'," +
+					" email = '" + clienteDTO.Email +
+					"' where id = '" + clienteDTO.IdCliente + "'";
+
+				bd.ExecutarComandoSQL(comando);
+			}
+			catch (Exception excecao)
+			{
+				MessageBox.Show("Erro ao alterar: " + excecao);
+			}
+			finally
+			{
+				bd = null;
+			}
 		}
 
-		private string TrocarAspas(UsuarioDTO dto)
+		private string TrocarAspas(string nome)
 		{
-			string resultado = dto.NomeCompleto.Replace("'", "''");
-			return resultado;
+			return nome.Replace("'", "''");
 		}
 
-		public DataTable SelecionaTodosUsuarios()
+		public DataTable SelecionarTodos()
 		{
 			DataTable dt = new DataTable();
 			try
@@ -63,45 +114,38 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				bd.Conectar();
 				dt = bd.RetDataTable("Select * from USUARIO");
 			}
-			catch (Exception ex)
+			catch (Exception excecao)
 			{
-				Console.WriteLine("Erro ao tentar selecionar todos os usuários: " + ex);
+				Console.WriteLine("Erro ao tentar selecionar todos os usuários: " + excecao);
 			}
-			return dt;
-		}
-
-		public DataTable SelecionaTodosFuncoes()
-		{
-			DataTable dt = new DataTable();
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-				dt = bd.RetDataTable("Select * from FUNCAO");
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine("Erro ao tentar Selecionar todas as funções: " + ex);
-				MessageBox.Show(ex.ToString());
-			}
+			finally
+            {
+				bd = null;
+            }
 
 			return dt;
 		}
 
-		public MySqlDataReader SelecionaTodosUsuariosDATAREADER()
+		public DataTable SelecionarComCondicao(string condicao)
 		{
+			DataTable dataTable = new DataTable();
+
 			try
 			{
 				bd = new AcessoBancoDados();
 				bd.Conectar();
-				dr = bd.RetDataReader("Select * from USUARIO");
-				//return dr;
+				dataTable = bd.RetDataTable("Select * from USUARIO where " + condicao);
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine("Erro ao tentar selecionar todos os usuários: " + ex);
+				MessageBox.Show("Erro ao listar com condição" + ex.ToString());
 			}
-			return dr;
+			finally
+			{
+				bd = null;
+			}
+
+			return dataTable;
 		}
 	}
 }

@@ -31,8 +31,6 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
                 {
                     MessageBox.Show("Já existe a categoria com o mesmo nome");
                 }
-
-
             }
             catch (Exception excecao)
             {
@@ -71,21 +69,11 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
                 bd = new AcessoBancoDados();
                 bd.Conectar();
 
-                int jaExisteUmaCategoria = this.SelecionarComCondicao("categoria_cliente = '" + categoriaClienteDTO.CategoriaCliente + "'").Rows.Count;
+                string comando = "UPDATE CATEGORIA_CLIENTE set " +
+                    "categoria_cliente = '" + categoriaClienteDTO.CategoriaCliente + "'" +
+                    "where id_categoria_cliente = '" + categoriaClienteDTO.CategoriaCliente + "'";
 
-                // Comparando se já existe uma categoria
-                if (jaExisteUmaCategoria == 0)
-                {
-                    string comando = "UPDATE CATEGORIA_CLIENTE set " +
-                       "categoria_cliente = '" + categoriaClienteDTO.CategoriaCliente + "'" +
-                       "where id_categoria_cliente = '" + categoriaClienteDTO.CategoriaCliente + "'";
-
-                    bd.ExecutarComandoSQL(comando);
-                }
-                else
-                {
-                    MessageBox.Show("Já existe a categoria com o mesmo nome");
-                }
+                bd.ExecutarComandoSQL(comando);
             }
             catch (Exception excecao)
             {

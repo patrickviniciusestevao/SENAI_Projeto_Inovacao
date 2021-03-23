@@ -61,6 +61,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			catch (Exception ex)
 			{
 				Console.WriteLine("Erro ao tentar Selecionar todas as funções: " + ex);
+				MessageBox.Show(ex.ToString());
 			}
 
 			return dt;
