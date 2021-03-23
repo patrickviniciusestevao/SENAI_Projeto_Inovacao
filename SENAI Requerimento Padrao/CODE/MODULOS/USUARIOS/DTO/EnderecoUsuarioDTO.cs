@@ -1,6 +1,6 @@
 ﻿namespace SENAI_Requerimento_Padrao.CODE.DTO
 {
-    class EnderecoUsuarioDTOcs
+    class EnderecoUsuarioDTO
     {
         private int id_endereco_usuario;
         private int id_usuario;

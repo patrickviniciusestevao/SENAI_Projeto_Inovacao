@@ -12,7 +12,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 	class UsuarioBLL
 	{
 		AcessoBancoDados bd;
-
+		
 		public void Inserir(UsuarioDTO usuarioDTO)
 		{
 			try
@@ -20,14 +20,14 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				bd = new AcessoBancoDados();
 				bd.Conectar();
 
-				string nomeCompleto = TrocarAspas(usuarioDTO.NomeCompleto);
+				string nome_completo = TrocarAspas(usuarioDTO.NomeCompleto);
 				
 				string comando = "INSERT INTO USUARIO (id_funcao, url_foto_usuario," +
 					"nome_completo, matricula, email_institucional, senha, situacao)" +
 					"values (" +
 						usuarioDTO.IdFuncao + "," +
 						"'C:/foto.jpeg'," +
-						"'"+ nomeCompleto + "'," +
+						"'"+ nome_completo + "'," +
 						"'"+ usuarioDTO.Matricula + "'," +
 						"'"+ usuarioDTO.EmailInstitucional + "'," +
 						"'123'," +
@@ -44,7 +44,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				bd = null;
 			}
 		}
-
+		
 		public void Excluir(UsuarioDTO usuarioDTO)
 		{
 			try
@@ -64,6 +64,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				bd = null;
 			}
 		}
+		
 		public void Alterar(UsuarioDTO usuarioDTO)
 		{
 			try
@@ -72,21 +73,18 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				bd.Conectar();
 
 				// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
-				string nome = this.TrocarAspas(clienteDTO.NomeCompleto);
-				string nome_social = this.TrocarAspas(clienteDTO.NomeSocial);
+				string nome_completo = this.TrocarAspas(usuarioDTO.NomeCompleto);
 
 				string comando =
-					"UPDATE CLIENTE set " +
-					"id_categoria_cliente = '" + clienteDTO.IdCategoria + "'," +
-					" url_foto_usuario = '" + clienteDTO.Url + "'," +
-					" nome_completo = '" + nome + "'," +
-					" matricula = '" + clienteDTO.Matricula + "'," +
-					" nome_social = '" + nome_social + "'," +
-					" cpf = '" + clienteDTO.Cpf + "'," +
-					" rg = '" + clienteDTO.Rg + "'," +
-					" orgao_emissor = '" + clienteDTO.OrgaoEmissor + "'," +
-					" email = '" + clienteDTO.Email +
-					"' where id = '" + clienteDTO.IdCliente + "'";
+					"UPDATE USUARIO set " +
+					" id_funcao = '" + usuarioDTO.IdFuncao + "'," +
+					" url_foto_usuario = '" + usuarioDTO.UrlFotoUsuario + "'," +
+					" nome_completo = '" + nome_completo + "'," +
+					" matricula = '" + usuarioDTO.Matricula + "'," +
+					" email_institucional = '" + usuarioDTO.EmailInstitucional + "'," +
+					" senha = '" + usuarioDTO.Senha + "'," +
+					" situacao = '" + usuarioDTO.Situacao+
+					"' where id = '" + usuarioDTO.IdUsuario + "'";
 
 				bd.ExecutarComandoSQL(comando);
 			}
@@ -99,7 +97,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				bd = null;
 			}
 		}
-
+		
 		private string TrocarAspas(string nome)
 		{
 			return nome.Replace("'", "''");

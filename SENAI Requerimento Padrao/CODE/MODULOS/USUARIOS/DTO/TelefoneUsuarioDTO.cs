@@ -12,6 +12,6 @@
         public int IdUsuario { get => id_usuario; set => id_usuario = value; }
         public string NumeroTelefone { get => numero_telefone; set => numero_telefone = value; }
         public bool Whatsapp { get => whatsapp; set => whatsapp = value; }
-        public string CaregoriaTelefone { get => caregoria_telefone; set => caregoria_telefone = value; }
+        public string CategoriaTelefone { get => caregoria_telefone; set => caregoria_telefone = value; }
     }
 }
