@@ -75,6 +75,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
                 bd.ExecutarComandoSQL(comando);
             }
+            // a
             catch (Exception excecao)
             {
                 MessageBox.Show("Erro ao alterar: " + excecao.ToString());
