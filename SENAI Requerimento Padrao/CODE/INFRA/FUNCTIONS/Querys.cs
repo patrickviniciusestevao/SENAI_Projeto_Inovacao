@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using SENAI_Requerimento_Padrao.CODE.DAL;
-using SENAI_Requerimento_Padrao.CODE.DTO;
 
 namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
 {
