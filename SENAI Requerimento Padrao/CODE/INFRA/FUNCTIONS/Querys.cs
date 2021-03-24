@@ -8,7 +8,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
 	class Querys
 	{
         AcessoBancoDados bd;
-        private string TrocarAspas(string nome)
+        public string TrocarAspas(string nome)
         {
             return nome.Replace("'", "''");
         }
@@ -34,14 +34,14 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             }
         }
 
-        public void Excluir(string tabela, string colunas_id, string valor_id)
+        public void Excluir(string tabela, string coluna_id, string valor_id)
         {
             try
             {
                 bd = new AcessoBancoDados();
                 bd.Conectar();
                 string comando = "" +
-                    "DELETE FROM "+ tabela +" where "+ colunas_id + " = '" + valor_id + "'";
+                    "DELETE FROM "+ tabela +" where "+ coluna_id + " = '" + valor_id + "'";
                 bd.ExecutarComandoSQL(comando);
             }
             catch (Exception excecao)
@@ -54,7 +54,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             }
         }
 
-        public void Alterar(string tabela, string valores, string condicao)
+        public void Alterar(string tabela, string valores, string coluna_id, string valor_id)
         {
             try
             {

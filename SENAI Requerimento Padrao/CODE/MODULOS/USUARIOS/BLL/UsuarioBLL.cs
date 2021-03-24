@@ -1,68 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using SENAI_Requerimento_Padrao.CODE.DTO;
 using SENAI_Requerimento_Padrao.CODE.DAL;
 using System.Data;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
 namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
 	class UsuarioBLL
 	{
 		AcessoBancoDados bd;
-		
+		Querys querys = new Querys();
+
 		public void Inserir(UsuarioDTO usuarioDTO)
 		{
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
 
-				string nome_completo = TrocarAspas(usuarioDTO.NomeCompleto);
-				
-				string comando = "INSERT INTO USUARIO (id_funcao, url_foto_usuario," +
-					"nome_completo, matricula, email_institucional, senha, situacao)" +
-					"values (" +
-						usuarioDTO.IdFuncao + "," +
-						"'C:/foto.jpeg'," +
-						"'"+ nome_completo + "'," +
-						"'"+ usuarioDTO.Matricula + "'," +
-						"'"+ usuarioDTO.EmailInstitucional + "'," +
-						"'123'," +
-						"'"+ usuarioDTO.Situacao + "')";
-
-				bd.ExecutarComandoSQL(comando);
-			}
-			catch (Exception excecao)
-			{
-				MessageBox.Show("Erro ao inserir: " + excecao.ToString());
-			}
-			finally
-			{
-				bd = null;
-			}
+			string nome_completo = querys.TrocarAspas(usuarioDTO.NomeCompleto);
+		
+			querys.Inserir("USUARIO", "id_funcao, url_foto_usuario, nome_completo, matricula, email_institucional, senha, situacao",
+				usuarioDTO.IdFuncao + "," +
+				"'C:/foto.jpeg'," +
+				"'" + nome_completo + "'," +
+				"'" + usuarioDTO.Matricula + "'," +
+				"'" + usuarioDTO.EmailInstitucional + "'," +
+				"'123'," +
+				"'" + usuarioDTO.Situacao + "'");
 		}
 		
 		public void Excluir(UsuarioDTO usuarioDTO)
 		{
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-				string comando = "" +
-					"DELETE FROM USUARIO where id_cliente = '" + usuarioDTO.IdUsuario + "'";
-				bd.ExecutarComandoSQL(comando);
-			}
-			catch (Exception excecao)
-			{
-				MessageBox.Show("Erro ao tentar Excluir: " + excecao.ToString());
-			}
-			finally
-			{
-				bd = null;
-			}
+			string comando = "" +
+				"DELETE FROM USUARIO where id_cliente = '" + usuarioDTO.IdUsuario + "'";
+
+
 		}
 		
 		public void Alterar(UsuarioDTO usuarioDTO)
@@ -96,11 +66,6 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			{
 				bd = null;
 			}
-		}
-		
-		private string TrocarAspas(string nome)
-		{
-			return nome.Replace("'", "''");
 		}
 
 		public DataTable SelecionarTodos()
