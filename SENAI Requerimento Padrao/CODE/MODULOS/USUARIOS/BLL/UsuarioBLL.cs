@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
 namespace SENAI_Requerimento_Padrao.CODE.BLL
-{
+{//teste lucas
 	class UsuarioBLL
 	{
 		AcessoBancoDados bd;
