@@ -29,43 +29,23 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		
 		public void Excluir(UsuarioDTO usuarioDTO)
 		{
-			string comando = "" +
-				"DELETE FROM USUARIO where id_cliente = '" + usuarioDTO.IdUsuario + "'";
-
-
+			querys.Excluir("USUARIO", "id_cliente", "'" + usuarioDTO.IdUsuario + "'"); 
 		}
 		
 		public void Alterar(UsuarioDTO usuarioDTO)
 		{
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
+			// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
+			string nome_completo = querys.TrocarAspas(usuarioDTO.NomeCompleto);
 
-				// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
-				string nome_completo = this.TrocarAspas(usuarioDTO.NomeCompleto);
-
-				string comando =
-					"UPDATE USUARIO set " +
-					" id_funcao = '" + usuarioDTO.IdFuncao + "'," +
-					" url_foto_usuario = '" + usuarioDTO.UrlFotoUsuario + "'," +
-					" nome_completo = '" + nome_completo + "'," +
-					" matricula = '" + usuarioDTO.Matricula + "'," +
-					" email_institucional = '" + usuarioDTO.EmailInstitucional + "'," +
-					" senha = '" + usuarioDTO.Senha + "'," +
-					" situacao = '" + usuarioDTO.Situacao+
-					"' where id = '" + usuarioDTO.IdUsuario + "'";
-
-				bd.ExecutarComandoSQL(comando);
-			}
-			catch (Exception excecao)
-			{
-				MessageBox.Show("Erro ao alterar: " + excecao);
-			}
-			finally
-			{
-				bd = null;
-			}
+			querys.Alterar("USUARIO",
+				" id_funcao = '" + usuarioDTO.IdFuncao + "'," +
+				" url_foto_usuario = '" + usuarioDTO.UrlFotoUsuario + "'," +
+				" nome_completo = '" + nome_completo + "'," +
+				" matricula = '" + usuarioDTO.Matricula + "'," +
+				" email_institucional = '" + usuarioDTO.EmailInstitucional + "'," +
+				" senha = '" + usuarioDTO.Senha + "'," +
+				" situacao = '" + usuarioDTO.Situacao,
+				"id_usuario", "'" + usuarioDTO.IdUsuario + "'");
 		}
 
 		public DataTable SelecionarTodos()
