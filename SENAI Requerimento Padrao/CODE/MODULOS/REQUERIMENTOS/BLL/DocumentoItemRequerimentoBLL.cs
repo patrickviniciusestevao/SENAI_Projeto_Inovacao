@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SENAI_Requerimento_Padrao.CODE.MODULOS.REQUERIMENTOS.BLL
+namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
     class DocumentoItemRequerimentoBLL
     {

@@ -61,7 +61,6 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
                 bd = new AcessoBancoDados();
                 bd.Conectar();
 
-
                 string comando =
                     "UPDATE "+ tabela + " set " +
                     valores + 
