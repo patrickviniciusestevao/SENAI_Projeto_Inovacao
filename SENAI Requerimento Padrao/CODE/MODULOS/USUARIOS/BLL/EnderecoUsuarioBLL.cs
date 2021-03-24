@@ -12,15 +12,15 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		public void Inserir(EnderecoUsuarioDTO enderecoUsuarioDTO)
 		{
 			querys.Inserir("ENDERECO_USUARIO", "id_usuario, logradouro, numero, cep, bairro, complemento, cidade, uf, categoria_endereco",
-				"'" + enderecoUsuarioDTO.IdUsuario + "'," +
-				"'" + enderecoUsuarioDTO.Logradouro + "'," +
-				"'" + enderecoUsuarioDTO.Numero + "'," +
-				"'" + enderecoUsuarioDTO.Cep + "'," +
-				"'" + enderecoUsuarioDTO.Bairro + "'," +
-				"'" + enderecoUsuarioDTO.Complemento + "'," +
-				"'" + enderecoUsuarioDTO.Cidade + "'," +
-				"'" + enderecoUsuarioDTO.Uf + "'," +
-				"'" + enderecoUsuarioDTO.CategoriaEndereco + "'"
+				$"'{enderecoUsuarioDTO.IdUsuario}', " +
+				$"'{enderecoUsuarioDTO.Logradouro}', " +
+				$"'{enderecoUsuarioDTO.Numero}', " +
+				$"'{enderecoUsuarioDTO.Cep}', " +
+				$"'{enderecoUsuarioDTO.Bairro}', " +
+				$"'{enderecoUsuarioDTO.Complemento}', " +
+				$"'{enderecoUsuarioDTO.Cidade}', " +
+				$"'{enderecoUsuarioDTO.Uf}', " +
+				$"'{enderecoUsuarioDTO.CategoriaEndereco}'"
 			);
 		}
 
@@ -32,15 +32,15 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		public void Alterar(EnderecoUsuarioDTO enderecoUsuarioDTO)
 		{
 			querys.Alterar("ENDERECO_USUARIO",
-				"id_usuario = '" + enderecoUsuarioDTO.IdUsuario + "'," +
-				"logradouro = '" + enderecoUsuarioDTO.Logradouro + "'," +
-				"numero = '" + enderecoUsuarioDTO.Numero + "'," +
-				"cep = '" + enderecoUsuarioDTO.Cep + "'," +
-				"bairro = '" + enderecoUsuarioDTO.Bairro + "'," +
-				"complemento = '" + enderecoUsuarioDTO.Complemento + "'," +
-				"cidade = '" + enderecoUsuarioDTO.Cidade + "'," +
-				"uf = '" + enderecoUsuarioDTO.Uf + "'," +
-				"categoria_endereco = '" + enderecoUsuarioDTO.CategoriaEndereco + "'",
+				$"id_usuario = '{enderecoUsuarioDTO.IdUsuario}', " +
+				$"logradouro = '{enderecoUsuarioDTO.Logradouro}', " +
+				$"numero = '{enderecoUsuarioDTO.Numero}', " +
+				$"cep = '{enderecoUsuarioDTO.Cep}', " +
+				$"bairro = '{enderecoUsuarioDTO.Bairro}', " +
+				$"complemento = '{enderecoUsuarioDTO.Complemento}', " +
+				$"cidade = '{enderecoUsuarioDTO.Cidade}', " +
+				$"uf = '{enderecoUsuarioDTO.Uf}', " +
+				$"categoria_endereco = '{enderecoUsuarioDTO.CategoriaEndereco}'",
 				"id_endereco_usuario", enderecoUsuarioDTO.IdEnderecoUsuario.ToString()
 			);
 		}

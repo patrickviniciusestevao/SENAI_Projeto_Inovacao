@@ -13,11 +13,11 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		public void Inserir(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
 		{
 			querys.Inserir("REQUERIMENTO_USUARIO", "id_requerimento, id_usuario, data_cadastro, acao, justificativa_cancelamento",
-				"'" + requerimentoUsuarioDTO.IdRequerimento + "'," +
-				"'" + requerimentoUsuarioDTO.IdUsuario + "'," +
-				"'" + requerimentoUsuarioDTO.DataCadastro + "'," +
-				"'" + requerimentoUsuarioDTO.Acao + "'," +
-				"'" + requerimentoUsuarioDTO.JustificativaCancelamento + "'"
+				$"'{requerimentoUsuarioDTO.IdRequerimento}', " +
+				$"'{requerimentoUsuarioDTO.IdUsuario}', " +
+				$"'{requerimentoUsuarioDTO.DataCadastro}', " +
+				$"'{requerimentoUsuarioDTO.Acao}', " +
+				$"'{requerimentoUsuarioDTO.JustificativaCancelamento}'"
 			);
 		}
 
@@ -29,15 +29,14 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		public void Alterar(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
 		{
 			querys.Alterar("REQUERIMENTO_USUARIO",
-				"id_requerimento = '" + requerimentoUsuarioDTO.IdRequerimento + "'," +
-				"id_usuario = '" + requerimentoUsuarioDTO.IdUsuario + "'," +
-				"data_cadastro = '" + requerimentoUsuarioDTO.DataCadastro + "'," +
-				"acao = '" + requerimentoUsuarioDTO.Acao + "'," +
-				"justificativa_cancelamento = '" + requerimentoUsuarioDTO.JustificativaCancelamento + "'",
+				$"id_requerimento = '{requerimentoUsuarioDTO.IdRequerimento}', " +
+				$"id_usuario = '{requerimentoUsuarioDTO.IdUsuario}', " +
+				$"data_cadastro = '{requerimentoUsuarioDTO.DataCadastro}', " +
+				$"acao = '{requerimentoUsuarioDTO.Acao}', " +
+				$"justificativa_cancelamento = '{requerimentoUsuarioDTO.JustificativaCancelamento}'",
 				"id_requerimento_usuario", requerimentoUsuarioDTO.IdRequerimentoUsuario.ToString()
 			);
 		}
-
 		public DataTable SelecionarTodos()
 		{
 			return querys.SelecionarTodos("REQUERIMENTO_USUARIO");
