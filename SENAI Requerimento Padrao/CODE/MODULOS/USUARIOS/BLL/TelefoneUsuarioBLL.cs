@@ -17,27 +17,21 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				$"' {telefoneUsuarioDTO.IdUsuario} '," +
 				$"' {telefoneUsuarioDTO.NumeroTelefone}  '," +
 				$"' {telefoneUsuarioDTO.Whatsapp} '," +
-				$"' {telefoneUsuarioDTO.CategoriaTelefone} " +
-				$"')");
-			
-				
+				$"' {telefoneUsuarioDTO.CategoriaTelefone} ");	
 		}
 		public void Excluir(TelefoneUsuarioDTO telefoneUsuarioDTO)
 		{
-			querys.Inserir("TELEFONE_USUARIO" , "id_funcao" , "'"+ telefoneUsuarioDTO.IdTelefoneUsuario + "'");	
+			querys.Inserir("TELEFONE_USUARIO" , "id_funcao" , telefoneUsuarioDTO.IdTelefoneUsuario.ToString());	
 		}
 
 		public void Alterar(TelefoneUsuarioDTO telefoneUsuarioDTO)
 		{
-
-
 			querys.Alterar(" TELEFONE_USUARIO ", "," +
 				"id_usuario = '" + telefoneUsuarioDTO.IdUsuario + "'," +
 				"numero_telefone = '" + telefoneUsuarioDTO.NumeroTelefone + "'," +
 				"whatsapp = '" + telefoneUsuarioDTO.Whatsapp + "'," +
 				"categoria_telefone = '" + telefoneUsuarioDTO.CategoriaTelefone,
 				"id_telefone_usuario ", "'" + telefoneUsuarioDTO.IdTelefoneUsuario + "'");
-
 		}
 		public DataTable SelecionarTodos()
 		{
@@ -46,7 +40,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
 		public DataTable SelecionarComCondicao(string condicao)
 		{
-			return querys.SelecionarComCondicao("TELEFONE_USUARIO where ", condicao);
+			return querys.SelecionarComCondicao("TELEFONE_USUARIO", condicao);
 			
 		}
 	}
