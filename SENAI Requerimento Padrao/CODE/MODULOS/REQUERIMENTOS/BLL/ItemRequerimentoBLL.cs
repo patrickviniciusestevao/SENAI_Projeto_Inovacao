@@ -4,7 +4,7 @@ using SENAI_Requerimento_Padrao.CODE.DAL;
 using System.Data;
 using System.Windows.Forms;
 
-namespace SENAI_Requerimento_Padrao.CODE.MODULOS.REQUERIMENTOS.BLL
+namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
     class ItemRequerimentoBLL
     {

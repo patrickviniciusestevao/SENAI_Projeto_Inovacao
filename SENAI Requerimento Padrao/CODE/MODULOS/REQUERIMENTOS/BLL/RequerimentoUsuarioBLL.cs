@@ -2,122 +2,50 @@
 using System.Data;
 using System.Windows.Forms;
 using SENAI_Requerimento_Padrao.CODE.DTO;
-using SENAI_Requerimento_Padrao.CODE.DAL;
+using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
-namespace SENAI_Requerimento_Padrao.CODE.MODULOS.REQUERIMENTOS.BLL
+namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
     class RequerimentoUsuarioBLL
     {
-		AcessoBancoDados bd;
+		Querys querys = new Querys();
+
 		public void Inserir(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
 		{
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-
-				string comando = "INSERT INTO REQUERIMENTO_USUARIO (id_requerimento, id_usuario, data_cadastro, acao, justificativa_cancelamento) values (" +
-					"'" + requerimentoUsuarioDTO.IdRequerimento + "'," +
-					"'" + requerimentoUsuarioDTO.IdUsuario + "'," +
-					"'" + requerimentoUsuarioDTO.DataCadastro + "'," +
-					"'" + requerimentoUsuarioDTO.Acao + "'," +
-					"'" + requerimentoUsuarioDTO.JustificativaCancelamento + "')";
-				bd.ExecutarComandoSQL(comando);
-			}
-			catch (Exception excecao)
-			{
-				MessageBox.Show("Erro ao tentar inserir: " + excecao.ToString());
-			}
-			finally
-			{
-				bd = null;
-			}
+			querys.Inserir("REQUERIMENTO_USUARIO", "id_requerimento, id_usuario, data_cadastro, acao, justificativa_cancelamento",
+				"'" + requerimentoUsuarioDTO.IdRequerimento + "'," +
+				"'" + requerimentoUsuarioDTO.IdUsuario + "'," +
+				"'" + requerimentoUsuarioDTO.DataCadastro + "'," +
+				"'" + requerimentoUsuarioDTO.Acao + "'," +
+				"'" + requerimentoUsuarioDTO.JustificativaCancelamento + "'"
+			);
 		}
 
 		public void Excluir(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
 		{
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-				string comando = "DELETE FROM REQUERIMENTO_USUARIO where id_requerimento_usuario = '" +
-					requerimentoUsuarioDTO.IdRequerimentoUsuario + "'";
-				bd.ExecutarComandoSQL(comando);
-			}
-			catch (Exception excecao)
-			{
-				MessageBox.Show("Erro ao tentar Excluir: " + excecao.ToString());
-			}
-			finally
-			{
-				bd = null;
-			}
+			querys.Excluir("REQUERIMENTO_USUARIO", "id_requerimento_usuario", requerimentoUsuarioDTO.IdRequerimentoUsuario.ToString());
 		}
 
 		public void Alterar(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
 		{
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-
-				string comando = "UPDATE REQUERIMENTO_USUARIO set " +
-					"id_requerimento = '" + requerimentoUsuarioDTO.IdRequerimento+ "'," +
-					"id_usuario = '" + requerimentoUsuarioDTO.IdUsuario + "'," +
-					"data_cadastro = '" + requerimentoUsuarioDTO.DataCadastro+ "'," +
-					"acao = '" + requerimentoUsuarioDTO.Acao + "'," +
-					"justificativa_cancelamento = '" + requerimentoUsuarioDTO.JustificativaCancelamento + "'" +
-					"where id_requerimento_usuario = '" + requerimentoUsuarioDTO.IdRequerimentoUsuario+ "'";
-
-				bd.ExecutarComandoSQL(comando);
-			}
-			catch (Exception excecao)
-			{
-				MessageBox.Show("Erro ao alterar: " + excecao.ToString());
-			}
-			finally
-			{
-				bd = null;
-			}
+			querys.Alterar("REQUERIMENTO_USUARIO",
+				"id_requerimento = '" + requerimentoUsuarioDTO.IdRequerimento + "'," +
+				"id_usuario = '" + requerimentoUsuarioDTO.IdUsuario + "'," +
+				"data_cadastro = '" + requerimentoUsuarioDTO.DataCadastro + "'," +
+				"acao = '" + requerimentoUsuarioDTO.Acao + "'," +
+				"justificativa_cancelamento = '" + requerimentoUsuarioDTO.JustificativaCancelamento + "'",
+				"id_requerimento_usuario", requerimentoUsuarioDTO.IdRequerimentoUsuario.ToString()
+			);
 		}
 
 		public DataTable SelecionarTodos()
 		{
-			DataTable dt = new DataTable();
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-				dt = bd.RetDataTable("Select * from REQUERIMENTO_USUARIO");
-			}
-			catch (Exception excecao)
-			{
-				MessageBox.Show("Erro ao selecionar:" + excecao.ToString());
-			}
-			finally
-			{
-				bd = null;
-			}
-
-			return dt;
+			return querys.SelecionarTodos("REQUERIMENTO_USUARIO");
 		}
 
 		public DataTable SelecionarComCondicao(string condicao)
 		{
-			DataTable dataTable = new DataTable();
-
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-				dataTable = bd.RetDataTable("Select * from REQUERIMENTO_USUARIO where " + condicao);
-			}
-			catch (Exception excecao)
-			{
-				MessageBox.Show("Erro ao listar com condição: " + excecao.ToString());
-			}
-
-			return dataTable;
+			return querys.SelecionarComCondicao("REQUERIMENTO_USUARIO", condicao);
 		}
 	}
 }
