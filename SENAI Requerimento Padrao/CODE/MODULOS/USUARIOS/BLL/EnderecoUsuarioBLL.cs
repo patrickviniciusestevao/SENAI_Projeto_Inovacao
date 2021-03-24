@@ -2,40 +2,26 @@
 using System.Data;
 using System.Windows.Forms;
 using SENAI_Requerimento_Padrao.CODE.DTO;
-using SENAI_Requerimento_Padrao.CODE.DAL;
+using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
 namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
     class EnderecoUsuarioBLL
     {
-		AcessoBancoDados bd;
+		Querys querys = new Querys();
 		public void Inserir(EnderecoUsuarioDTO enderecoUsuarioDTO)
 		{
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-
-				string comando = "INSERT INTO ENDERECO_USUARIO (id_usuario, logradouro, numero, cep, bairro, complemento, cidade, uf, categoria_endereco) values (" +
-					"'" + enderecoUsuarioDTO.IdUsuario + "'," +
-					"'" + enderecoUsuarioDTO.Logradouro + "'," +
-					"'" + enderecoUsuarioDTO.Numero + "'," +
-					"'" + enderecoUsuarioDTO.Cep + "'," +
-					"'" + enderecoUsuarioDTO.Bairro + "'," +
-					"'" + enderecoUsuarioDTO.Complemento + "'," +
-					"'" + enderecoUsuarioDTO.Cidade + "'," +
-					"'" + enderecoUsuarioDTO.Uf + "'," +
-					"'" + enderecoUsuarioDTO.CategoriaEndereco + "')";
-				bd.ExecutarComandoSQL(comando);
-			}
-			catch (Exception excecao)
-			{
-				MessageBox.Show("Erro ao tentar inserir: " + excecao.ToString());
-			}
-			finally
-			{
-				bd = null;
-			}
+			querys.Inserir("ENDERECO_USUARIO", "id_usuario, logradouro, numero, cep, bairro, complemento, cidade, uf, categoria_endereco",
+				"'" + enderecoUsuarioDTO.IdUsuario + "'," +
+				"'" + enderecoUsuarioDTO.Logradouro + "'," +
+				"'" + enderecoUsuarioDTO.Numero + "'," +
+				"'" + enderecoUsuarioDTO.Cep + "'," +
+				"'" + enderecoUsuarioDTO.Bairro + "'," +
+				"'" + enderecoUsuarioDTO.Complemento + "'," +
+				"'" + enderecoUsuarioDTO.Cidade + "'," +
+				"'" + enderecoUsuarioDTO.Uf + "'," +
+				"'" + enderecoUsuarioDTO.CategoriaEndereco + "'"
+			);
 		}
 
 		public void Excluir(EnderecoUsuarioDTO enderecoUsuarioDTO)

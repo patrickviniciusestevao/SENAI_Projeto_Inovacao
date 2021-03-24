@@ -16,7 +16,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			// Comparando se já existe uma função
 			if (jaExisteUmaFuncao == 0)
 			{
-				string funcao = TrocarAspas(funcaoDTO);
+				string funcao = querys.TrocarAspas(funcaoDTO.Funcao);
 
 				querys.Inserir("FUNCAO", "funcao, nivel_permissao",
 					"'" + funcao + "'," +
@@ -31,15 +31,17 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
 		public void Excluir(FuncaoDTO funcaoDTO)
 		{
-			querys.Excluir("FUNCAO", "id_funcao", "'" + funcaoDTO.IdFuncao + "'");
+			querys.Excluir("FUNCAO", "id_funcao", funcaoDTO.IdFuncao.ToString());
 		}
 
 		public void Alterar(FuncaoDTO funcaoDTO)
 		{
+			string funcao = querys.TrocarAspas(funcaoDTO.Funcao);
+
 			querys.Alterar("FUNCAO",
-				"funcao = '" + funcaoDTO.Funcao + "'," +
+				"funcao = '" + funcao + "'," +
 				"nivel_permissao = '" + funcaoDTO.NivelPermissao + "'",
-				"id_funcao", "'" + funcaoDTO.IdFuncao + "'"
+				"id_funcao", funcaoDTO.IdFuncao.ToString()
 			);
 		}
 
@@ -55,26 +57,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
 		public DataTable SelecionarComCondicao(string condicao)
 		{
-			DataTable dataTable = new DataTable();
-
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-				dataTable = bd.RetDataTable("Select * from FUNCAO where " + condicao);
-			}
-			catch (Exception excecao)
-			{
-				MessageBox.Show("Erro ao listar com condição: " + excecao.ToString());
-			}
-
-			return dataTable;
-		}
-
-		private string TrocarAspas(FuncaoDTO dto)
-		{
-			string resultado = dto.Funcao.Replace("'", "''");
-			return resultado;
+			return querys.SelecionarComCondicao("FUNCAO", condicao);
 		}
 	}
 }

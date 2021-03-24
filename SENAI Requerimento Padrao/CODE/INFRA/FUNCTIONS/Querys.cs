@@ -65,7 +65,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
                 string comando =
                     "UPDATE "+ tabela + " set " +
                     valores + 
-                    " where " + condicao;
+                    " where " + coluna_id + " = '" + valor_id + "'";
 
                 bd.ExecutarComandoSQL(comando);
             }
