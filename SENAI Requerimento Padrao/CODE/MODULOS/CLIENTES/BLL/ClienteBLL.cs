@@ -146,6 +146,5 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		{
 			return txt.Replace("'", "''");
 		}
-
 	}
 }

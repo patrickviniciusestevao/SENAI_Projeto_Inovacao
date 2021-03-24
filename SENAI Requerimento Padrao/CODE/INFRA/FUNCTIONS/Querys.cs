@@ -19,7 +19,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
         {
             return nome.Replace("'", "''");
         }
-        public void Inserir(String tabela, String colunas, String valores)
+        public void Inserir(string tabela, string colunas, string valores)
 		{
             try
             {
@@ -27,7 +27,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
                 bd.Conectar();
 
                 string comando = "INSERT INTO " + tabela + "(" + colunas + ") " +
-                     "values ('" + valores + "')";
+                     "values (" + valores + ")";
 
                 bd.ExecutarComandoSQL(comando);
             }
@@ -41,7 +41,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             }
         }
 
-        public void Excluir(String tabela, String colunas_id, String valor_id)
+        public void Excluir(string tabela, string colunas_id, string valor_id)
         {
             try
             {
@@ -61,26 +61,18 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             }
         }
 
-        public void Alterar(String tabela, UsuarioDTO usuarioDTO)
+        public void Alterar(string tabela, string valores, string condicao)
         {
             try
             {
                 bd = new AcessoBancoDados();
                 bd.Conectar();
 
-                // Se houver aspas, coloque mais uma para evitar possíveis erros no banco
-                string nome_completo = this.TrocarAspas(usuarioDTO.NomeCompleto);
 
                 string comando =
                     "UPDATE "+ tabela + " set " +
-                    " id_funcao = '" + usuarioDTO.IdFuncao + "'," +
-                    " url_foto_usuario = '" + usuarioDTO.UrlFotoUsuario + "'," +
-                    " nome_completo = '" + nome_completo + "'," +
-                    " matricula = '" + usuarioDTO.Matricula + "'," +
-                    " email_institucional = '" + usuarioDTO.EmailInstitucional + "'," +
-                    " senha = '" + usuarioDTO.Senha + "'," +
-                    " situacao = '" + usuarioDTO.Situacao +
-                    "' where id = '" + usuarioDTO.IdUsuario + "'";
+                    valores + 
+                    " where " + condicao;
 
                 bd.ExecutarComandoSQL(comando);
             }
@@ -94,7 +86,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             }
         }
 
-        public DataTable SelecionarTodos(String tabela)
+        public DataTable SelecionarTodos(string tabela)
         {
             DataTable dt = new DataTable();
             try
@@ -115,7 +107,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             return dt;
         }
 
-        public DataTable SelecionarComCondicao(String tabela, String condicao)
+        public DataTable SelecionarComCondicao(string tabela, string condicao)
         {
             DataTable dataTable = new DataTable();
 

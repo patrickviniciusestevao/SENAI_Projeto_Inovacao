@@ -60,7 +60,7 @@ namespace SENAI_Requerimento_Padrao.CODE.MODULOS.CLIENTES.BLL
 
                 string comando = "UPDATE CLIENTE_REQUERIMENTO set " +
                     "id_cliente = '" + clienteRequerimentoDTO.IdCliente + "'," +
-                    " id_requerimento = '" + clienteRequerimentoDTO.IdRequerimento + "'";
+                    "id_requerimento = '" + clienteRequerimentoDTO.IdRequerimento + "'";
 
                 bd.ExecutarComandoSQL(comando);
             }
