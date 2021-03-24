@@ -14,7 +14,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
         }
         public void Excluir(CategoriaClienteDTO categoriaClienteDTO)
         {
-            querys.Excluir("CATEGORIA_CLIENTE", "categoria_cliente", "'" + categoriaClienteDTO.CategoriaCliente + "'");
+            querys.Excluir("CATEGORIA_CLIENTE", "id_categoria_cliente", "'" + categoriaClienteDTO.IdCategoriaCliente + "'");
         }
         public void Alterar(CategoriaClienteDTO categoriaClienteDTO)
         {
