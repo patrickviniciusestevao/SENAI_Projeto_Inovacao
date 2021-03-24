@@ -1,6 +1,5 @@
 ﻿using System;
 using SENAI_Requerimento_Padrao.CODE.DTO;
-using SENAI_Requerimento_Padrao.CODE.DAL;
 using System.Data;
 using System.Windows.Forms;
 using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
@@ -9,7 +8,6 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 {//teste lucas
 	class UsuarioBLL
 	{
-		AcessoBancoDados bd;
 		Querys querys = new Querys();
 
 		public void Inserir(UsuarioDTO usuarioDTO)
@@ -50,45 +48,12 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
 		public DataTable SelecionarTodos()
 		{
-			DataTable dt = new DataTable();
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-				dt = bd.RetDataTable("Select * from USUARIO");
-			}
-			catch (Exception excecao)
-			{
-				Console.WriteLine("Erro ao tentar selecionar todos os usuários: " + excecao);
-			}
-			finally
-            {
-				bd = null;
-            }
-
-			return dt;
+			return querys.SelecionarTodos("USUARIO");
 		}
 
 		public DataTable SelecionarComCondicao(string condicao)
 		{
-			DataTable dataTable = new DataTable();
-
-			try
-			{
-				bd = new AcessoBancoDados();
-				bd.Conectar();
-				dataTable = bd.RetDataTable("Select * from USUARIO where " + condicao);
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Erro ao listar com condição" + ex.ToString());
-			}
-			finally
-			{
-				bd = null;
-			}
-
-			return dataTable;
+			return querys.SelecionarComCondicao("USUARIO", condicao);
 		}
 	}
 }
