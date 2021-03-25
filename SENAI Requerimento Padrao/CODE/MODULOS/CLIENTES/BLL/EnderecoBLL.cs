@@ -1,136 +1,56 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
-
+﻿using System.Data;
 using SENAI_Requerimento_Padrao.CODE.DTO;
 using SENAI_Requerimento_Padrao.CODE.DAL;
+using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
 namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
     class EnderecoBLL
     {
         AcessoBancoDados bd;
+        Querys querys = new Querys();
         public void Inserir(EnderecoDTO enderecoDTO)
         {
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-
-                string comando = "INSERT INTO ENDERECO (id_cliente, logradouro, numero, cep, bairro, complemento, cidade, uf, categoria_endereco) " +
-                    "values ('" + enderecoDTO.IdCliente + "', " +
-                    "'" + enderecoDTO.Logradouro + "', " +
-                    "'" + enderecoDTO.Numero + "', " +
-                    "'" + enderecoDTO.Cep + "', " +
-                    "'" + enderecoDTO.Bairro + "', " +
-                    "'" + enderecoDTO.Complemento + "', " +
-                    "'" + enderecoDTO.Cidade + "', " +
-                    "'" + enderecoDTO.Uf + "', " +
-                    "'" + enderecoDTO.CategoriaEndereco + "', " + 
-                ")";
-
-                bd.ExecutarComandoSQL(comando);
-            }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao tentar inserir: " + excecao);
-            }
-            finally
-            {
-                bd = null;
-            }
+            querys.Inserir("ENDERECO", "id_cliente, logradouro, numero, cep, bairro, complemento, cidade, uf, categoria_endereco",
+                "'" + enderecoDTO.IdCliente + "', " +
+                "'" + enderecoDTO.Logradouro + "', " +
+                "'" + enderecoDTO.Numero + "', " +
+                "'" + enderecoDTO.Cep + "', " +
+                "'" + enderecoDTO.Bairro + "', " +
+                "'" + enderecoDTO.Complemento + "', " +
+                "'" + enderecoDTO.Cidade + "', " +
+                "'" + enderecoDTO.Uf + "', " +
+                "'" + enderecoDTO.CategoriaEndereco + "'");
         }
-
         public void Excluir(EnderecoDTO enderecoDTO)
         {
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-                string comando = "DELETE FROM ENDERECO where id_endereco = '" + enderecoDTO.IdEndereco + "'";
-                bd.ExecutarComandoSQL(comando);
-            }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao tentar Excluir: " + excecao.ToString());
-            }
-            finally
-            {
-                bd = null;
-            }
-
+            querys.Excluir("ENDERECO", "id_endereco", "'" + enderecoDTO.IdEndereco + "'");
         }
-
         public void Alterar(EnderecoDTO enderecoDTO)
         {
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-
-                string comando = "UPDATE ENDERECO set " +
-                    "id_cliente = '" + enderecoDTO.IdCliente + "', " +
-                    "logradouro = '" + enderecoDTO.Logradouro + "', " +
-                    "numero = '" + enderecoDTO.Numero + "', " +
-                    "cep = '" + enderecoDTO.Cep + "', " +
-                    "bairro = '" + enderecoDTO.Bairro + "', " +
-                    "complemento = '" + enderecoDTO.Complemento + "', " +
-                    "cidade = '" + enderecoDTO.Cidade+ "', " +
-                    "uf = '" + enderecoDTO.Uf + "'" +
-                    "categoria_endereco = '" + enderecoDTO.CategoriaEndereco+ "', " +
-                    "where id_endereco = '" + enderecoDTO.IdEndereco + "'";
-
-                bd.ExecutarComandoSQL(comando);
-            }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao alterar: " + excecao.ToString());
-            }
-            finally
-            {
-                bd = null;
-            }
-
+            querys.Alterar("ENDERECO", 
+                "id_cliente = '" + enderecoDTO.IdCliente + "', " +
+                "logradouro = '" + enderecoDTO.Logradouro + "', " +
+                "numero = '" + enderecoDTO.Numero + "', " +
+                "cep = '" + enderecoDTO.Cep + "', " +
+                "bairro = '" + enderecoDTO.Bairro + "', " +
+                "complemento = '" + enderecoDTO.Complemento + "', " +
+                "cidade = '" + enderecoDTO.Cidade + "', " +
+                "uf = '" + enderecoDTO.Uf + "'" +
+                "categoria_endereco = '" + enderecoDTO.CategoriaEndereco + "'",
+                "id_endereco", enderecoDTO.IdEndereco.ToString());
         }
-
         public DataTable SelecionarTodos()
         {
-            DataTable dataTable = new DataTable();
-
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-                dataTable = bd.RetDataTable("Select * from ENDERECO");
-            }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao tentar Selecionar todos os endereços: " + excecao);
-            }
-            finally
-            {
-                bd = null;
-            }
-
-            return dataTable;
+            return querys.SelecionarTodos("ENDERECO");
         }
-
+        public DataTable SelecionarComFiltro(EnderecoDTO enderecoDTO)
+        {
+            return querys.SelecionarComCondicao("ENDERECO", "id_endereco like '" + enderecoDTO.IdEndereco + "%'");
+        }
         public DataTable SelecionarComCondicao(string condicao)
         {
-            DataTable dataTable = new DataTable();
-
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-                dataTable = bd.RetDataTable("Select * from ENDERECO where " + condicao);
-            }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao selecionar com condição: " + excecao.ToString());
-            }
-
-            return dataTable;
+            return querys.SelecionarComCondicao("ENDERECO", condicao);
         }
     }
 }

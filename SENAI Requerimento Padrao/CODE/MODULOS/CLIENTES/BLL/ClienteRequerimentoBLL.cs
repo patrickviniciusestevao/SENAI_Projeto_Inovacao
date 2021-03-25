@@ -1,119 +1,43 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
+﻿using System.Data;
 using SENAI_Requerimento_Padrao.CODE.DTO;
 using SENAI_Requerimento_Padrao.CODE.DAL;
+using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
 namespace SENAI_Requerimento_Padrao.CODE.MODULOS.CLIENTES.BLL
 {
     class ClienteRequerimentoBLL
     {
         AcessoBancoDados bd;
+        Querys querys = new Querys();
 
         public void Inserir(ClienteRequerimentoDTO clienteRequerimentoDTO)
         {
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-
-                string comando = "INSERT INTO CLIENTE_REQUERIMENTO(id_cliente, id_requerimento) " +
-                    "values ('" + clienteRequerimentoDTO.IdCliente + "'," +
-                    "'" + clienteRequerimentoDTO.IdRequerimento + "')";
-                bd.ExecutarComandoSQL(comando);
-            }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao tentar inserir: " + excecao.ToString());
-            }
-            finally
-            {
-                bd = null;
-            }
+            querys.Inserir("CLIENTE_REQUERIMENTO", "id_cliente, id_requerimento",
+                "'" + clienteRequerimentoDTO.IdCliente + "'," +
+                "'" + clienteRequerimentoDTO.IdRequerimento + "'");
         }
 
         public void Excluir(ClienteRequerimentoDTO clienteRequerimentoDTO)
         {
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-
-                string comando = "DELETE FROM CLIENTE_REQUERIMENTO where id_cliente_requerimento = '" + clienteRequerimentoDTO.IdClienteRequerimento + "'";
-                bd.ExecutarComandoSQL(comando);
-            }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao tentar inserir: " + excecao.ToString());
-            }
-            finally
-            {
-                bd = null;
-            }
+            querys.Excluir("CLIENTE_REQUERIMENTO", "id_cliente_requerimento", "'" + clienteRequerimentoDTO.IdClienteRequerimento + "'");
         }
         public void Alterar(ClienteRequerimentoDTO clienteRequerimentoDTO)
         {
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-
-                string comando = "UPDATE CLIENTE_REQUERIMENTO set " +
-                    "id_cliente = '" + clienteRequerimentoDTO.IdCliente + "'," +
-                    "id_requerimento = '" + clienteRequerimentoDTO.IdRequerimento + "'";
-
-                bd.ExecutarComandoSQL(comando);
-            }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao alterar: " + excecao);
-            }
-            finally
-            {
-                bd = null;
-            }
+            querys.Alterar("CLIENTE_REQUERIMENTO", "id_cliente = '" + clienteRequerimentoDTO.IdCliente + "'," +
+                "id_requerimento = '" + clienteRequerimentoDTO.IdRequerimento + "'", 
+                "id_cliente_requerimento", clienteRequerimentoDTO.IdClienteRequerimento.ToString());
         }
         public DataTable SelecionarTodos()
         {
-            DataTable dataTable = new DataTable();
-
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-                dataTable = bd.RetDataTable("Select * from CLIENTE_REQUERIMENTO");
-            }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao tentar Selecionar todos os clientes_requerimentos: " + excecao);
-            }
-            finally
-            {
-                bd = null;
-            }
-
-            return dataTable;
+            return querys.SelecionarTodos("CLIENTE_REQUERIMENTO");
+        }
+        public DataTable SelecionarComFiltro(ClienteRequerimentoDTO clienteRequerimentoDTO)
+        {
+            return querys.SelecionarComCondicao("CLIENTE_REQUERIMENTO", "id_cliente_requerimento like '" + clienteRequerimentoDTO.IdClienteRequerimento + "%'");
         }
         public DataTable SelecionarComCondicao(string condicao)
         {
-            DataTable dataTable = new DataTable();
-
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-                dataTable = bd.RetDataTable("Select * from CLIENTE_REQUERIMENTO where " + condicao);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar com condição" + ex.ToString());
-            }
-            finally
-            {
-                bd = null;
-            }
-
-            return dataTable;
+            return querys.SelecionarComCondicao("CLIENTE_REQUERIMENTO", condicao);
         }
     }
 }
