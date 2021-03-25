@@ -9,7 +9,6 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
     {
         AcessoBancoDados bd;
 		Querys querys = new Querys();
-
 		public void Inserir(ClienteDTO clienteDTO)
 		{
 				// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
@@ -28,12 +27,10 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 					"'" + clienteDTO.Situacao + "'"
 					);
 		}
-
 		public void Excluir(ClienteDTO clienteDTO)
 		{
 			querys.Excluir("CLIENTE", "id_cliente", "'" + clienteDTO.IdCliente + "'");
 		}
-
 		public void Alterar(ClienteDTO clienteDTO)
 		{
 				// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
@@ -51,17 +48,14 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				" orgao_emissor = '" + clienteDTO.OrgaoEmissor + "'," +
 				" email = '" + clienteDTO.Email + "'", "id_cliente", clienteDTO.IdCliente.ToString());
 		}
-
 		public DataTable SelecionarTodos()
 		{
 			return querys.SelecionarTodos("CLIENTE");
 		}
-
 		public DataTable SelecionarComFiltro(ClienteDTO clienteDTO)
 		{
 			return querys.SelecionarComCondicao("CLIENTE", "id_cliente like '" + clienteDTO.IdCliente + "%'");
 		}
-
 		public DataTable SelecionarComCondicao(string condicao)
 		{
 			return querys.SelecionarComCondicao("CLIENTE", condicao);
