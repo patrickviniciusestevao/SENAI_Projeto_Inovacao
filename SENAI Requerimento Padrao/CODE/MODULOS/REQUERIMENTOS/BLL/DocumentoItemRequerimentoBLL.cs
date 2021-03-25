@@ -1,6 +1,5 @@
 ﻿using System;
 using SENAI_Requerimento_Padrao.CODE.DTO;
-using SENAI_Requerimento_Padrao.CODE.DAL;
 using System.Data;
 using System.Windows.Forms;
 using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
@@ -42,5 +41,4 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			return querys.SelecionarComCondicao("DOCUMENTO_ITEM_REQUERIMENTO", condicao);
 		}
 	}
-}
 }

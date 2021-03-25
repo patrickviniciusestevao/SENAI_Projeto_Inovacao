@@ -30,7 +30,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             }
             finally
             {
-                bd = null;
+                bd.Fechar();
             }
         }
 
@@ -50,7 +50,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             }
             finally
             {
-                bd = null;
+                bd.Fechar();
             }
         }
 
@@ -74,7 +74,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             }
             finally
             {
-                bd = null;
+                bd.Fechar();
             }
         }
 
@@ -93,7 +93,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             }
             finally
             {
-                bd = null;
+                bd.Fechar();
             }
 
             return dt;
@@ -115,7 +115,31 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             }
             finally
             {
-                bd = null;
+                bd.Fechar();
+            }
+
+            return dataTable;
+        }
+
+        public DataTable SelecionarTodosComInnerJoin(string primeira_tabela, string segunda_tabela, string coluna_primeira, string coluna_segunda)
+        {
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                bd = new AcessoBancoDados();
+                bd.Conectar();
+                dataTable = bd.RetDataTable($"SELECT * FROM {primeira_tabela} " +
+                                            $"INNER JOIN {segunda_tabela} " +
+                                            $"ON {primeira_tabela}.{coluna_primeira} = {segunda_tabela}.{coluna_segunda}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar com inner join" + ex.ToString());
+            }
+            finally
+            {
+                bd.Fechar();
             }
 
             return dataTable;
