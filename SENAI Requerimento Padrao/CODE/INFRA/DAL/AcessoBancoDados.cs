@@ -37,7 +37,7 @@ namespace SENAI_Requerimento_Padrao.CODE.DAL
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.ToString());
+				MessageBox.Show("Não foi possível conectar ao banco: " + ex.ToString());
 			}
 			finally
 			{
@@ -66,6 +66,11 @@ namespace SENAI_Requerimento_Padrao.CODE.DAL
 				conn.Close();
 			}
 		}
+
+		public void Fechar()
+		{
+			conn.Close();
+        }
 
 		public DataTable RetDataTable(string sql)
 		{

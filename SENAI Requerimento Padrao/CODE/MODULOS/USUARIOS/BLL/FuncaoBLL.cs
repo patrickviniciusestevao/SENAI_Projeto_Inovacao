@@ -11,7 +11,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		Querys querys = new Querys();
 		public void Inserir(FuncaoDTO funcaoDTO)
 		{
-			int jaExisteUmaFuncao = querys.SelecionarComCondicao("FUNCAO", "categoria_cliente = '" + funcaoDTO.Funcao + "'").Rows.Count;
+			int jaExisteUmaFuncao = querys.SelecionarComCondicao("FUNCAO", "funcao = '" + funcaoDTO.Funcao + "'").Rows.Count;
 
 			// Comparando se já existe uma função
 			if (jaExisteUmaFuncao == 0)
