@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using SENAI_Requerimento_Padrao.CODE.DTO;
+using SENAI_Requerimento_Padrao.CODE.DAL;
 using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
 namespace SENAI_Requerimento_Padrao.CODE.MODULOS.DOCUMENTOS.BLL
 {
     class DocumentoBLL
     {
+        AcessoBancoDados bd;
         Querys querys = new Querys();
 
         public RetornoDTO Inserir(DocumentoDTO documentoDTO)
