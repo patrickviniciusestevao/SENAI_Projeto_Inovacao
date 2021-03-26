@@ -1,41 +1,39 @@
 ﻿using System.Data;
 using SENAI_Requerimento_Padrao.CODE.DTO;
-using SENAI_Requerimento_Padrao.CODE.DAL;
 using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
 namespace SENAI_Requerimento_Padrao.CODE.MODULOS.CLIENTES.BLL
 {
     class ClienteRequerimentoBLL
     {
-        AcessoBancoDados bd;
         Querys querys = new Querys();
 
-        public void Inserir(ClienteRequerimentoDTO clienteRequerimentoDTO)
+        public RetornoDTO Inserir(ClienteRequerimentoDTO clienteRequerimentoDTO)
         {
-            querys.Inserir("CLIENTE_REQUERIMENTO", "id_cliente, id_requerimento",
+            return querys.Inserir("CLIENTE_REQUERIMENTO", "id_cliente, id_requerimento",
                 "'" + clienteRequerimentoDTO.IdCliente + "'," +
                 "'" + clienteRequerimentoDTO.IdRequerimento + "'");
         }
 
-        public void Excluir(ClienteRequerimentoDTO clienteRequerimentoDTO)
+        public RetornoDTO Excluir(ClienteRequerimentoDTO clienteRequerimentoDTO)
         {
-            querys.Excluir("CLIENTE_REQUERIMENTO", "id_cliente_requerimento", "'" + clienteRequerimentoDTO.IdClienteRequerimento + "'");
+            return querys.Excluir("CLIENTE_REQUERIMENTO", "id_cliente_requerimento", "'" + clienteRequerimentoDTO.IdClienteRequerimento + "'");
         }
-        public void Alterar(ClienteRequerimentoDTO clienteRequerimentoDTO)
+        public RetornoDTO Alterar(ClienteRequerimentoDTO clienteRequerimentoDTO)
         {
-            querys.Alterar("CLIENTE_REQUERIMENTO", "id_cliente = '" + clienteRequerimentoDTO.IdCliente + "'," +
+            return querys.Alterar("CLIENTE_REQUERIMENTO", "id_cliente = '" + clienteRequerimentoDTO.IdCliente + "'," +
                 "id_requerimento = '" + clienteRequerimentoDTO.IdRequerimento + "'", 
                 "id_cliente_requerimento", clienteRequerimentoDTO.IdClienteRequerimento.ToString());
         }
-        public DataTable SelecionarTodos()
+        public SelecionarRetornoDTO SelecionarTodos()
         {
             return querys.SelecionarTodos("CLIENTE_REQUERIMENTO");
         }
-        public DataTable SelecionarComFiltro(ClienteRequerimentoDTO clienteRequerimentoDTO)
+        public SelecionarRetornoDTO SelecionarComFiltro(ClienteRequerimentoDTO clienteRequerimentoDTO)
         {
             return querys.SelecionarComCondicao("CLIENTE_REQUERIMENTO", "id_cliente_requerimento like '" + clienteRequerimentoDTO.IdClienteRequerimento + "%'");
         }
-        public DataTable SelecionarComCondicao(string condicao)
+        public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
         {
             return querys.SelecionarComCondicao("CLIENTE_REQUERIMENTO", condicao);
         }

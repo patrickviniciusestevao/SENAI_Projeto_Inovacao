@@ -9,34 +9,34 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
     class ModalidadeCursoBLL
     {
 		Querys querys = new Querys();
-		public void Inserir(ModalidadeCursoDTO modalidadeCursoDTO)
+		public RetornoDTO Inserir(ModalidadeCursoDTO modalidadeCursoDTO)
 		{
-			querys.Inserir("MODALIDADE_CURSO", "id_modalidade, id_curso",
+			return querys.Inserir("MODALIDADE_CURSO", "id_modalidade, id_curso",
 				$"'{modalidadeCursoDTO.IdModalidade}', " +
 				$"'{modalidadeCursoDTO.IdCurso}'");
 		}
 
-		public void Excluir(ModalidadeCursoDTO modalidadeCursoDTO)
+		public RetornoDTO Excluir(ModalidadeCursoDTO modalidadeCursoDTO)
 		{
-			querys.Excluir("MODALIDADE_CURSO", "id_modalidade_curso",
+			return querys.Excluir("MODALIDADE_CURSO", "id_modalidade_curso",
 				modalidadeCursoDTO.IdModalidadeCurso.ToString());
 		}
 
-		public void Alterar(ModalidadeCursoDTO modalidadeCursoDTO)
+		public RetornoDTO Alterar(ModalidadeCursoDTO modalidadeCursoDTO)
 		{
-			querys.Alterar("MODALIDADE_CURSO",
+			return querys.Alterar("MODALIDADE_CURSO",
 				$"id_modalidade = '{modalidadeCursoDTO.IdModalidade}', " +
 				$"id_curso = '{modalidadeCursoDTO.IdCurso}'",
 				"id_modalidade_curso", modalidadeCursoDTO.IdModalidadeCurso.ToString()
 			);
 		}
 
-		public DataTable SelecionarTodos()
+		public SelecionarRetornoDTO SelecionarTodos()
 		{
 			return querys.SelecionarTodos("MODALIDADE_CURSO");
 		}
 
-		public DataTable SelecionarComCondicao(string condicao)
+		public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
 		{
 			return querys.SelecionarComCondicao("MODALIDADE_CURSO", condicao);
 		}

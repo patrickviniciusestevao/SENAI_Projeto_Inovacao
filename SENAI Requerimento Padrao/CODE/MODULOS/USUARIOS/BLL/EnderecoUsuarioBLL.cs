@@ -9,9 +9,9 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
     class EnderecoUsuarioBLL
     {
 		Querys querys = new Querys();
-		public void Inserir(EnderecoUsuarioDTO enderecoUsuarioDTO)
+		public RetornoDTO Inserir(EnderecoUsuarioDTO enderecoUsuarioDTO)
 		{
-			querys.Inserir("ENDERECO_USUARIO", "id_usuario, logradouro, numero, cep, bairro, complemento, cidade, uf, categoria_endereco",
+			return querys.Inserir("ENDERECO_USUARIO", "id_usuario, logradouro, numero, cep, bairro, complemento, cidade, uf, categoria_endereco",
 				$"'{enderecoUsuarioDTO.IdUsuario}', " +
 				$"'{enderecoUsuarioDTO.Logradouro}', " +
 				$"'{enderecoUsuarioDTO.Numero}', " +
@@ -24,14 +24,14 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			);
 		}
 
-		public void Excluir(EnderecoUsuarioDTO enderecoUsuarioDTO)
+		public RetornoDTO Excluir(EnderecoUsuarioDTO enderecoUsuarioDTO)
 		{
-			querys.Excluir("ENDERECO_USUARIO", "id_endereco_usuario", enderecoUsuarioDTO.IdEnderecoUsuario.ToString());
+			return querys.Excluir("ENDERECO_USUARIO", "id_endereco_usuario", enderecoUsuarioDTO.IdEnderecoUsuario.ToString());
 		}
 
-		public void Alterar(EnderecoUsuarioDTO enderecoUsuarioDTO)
+		public RetornoDTO Alterar(EnderecoUsuarioDTO enderecoUsuarioDTO)
 		{
-			querys.Alterar("ENDERECO_USUARIO",
+			return querys.Alterar("ENDERECO_USUARIO",
 				$"id_usuario = '{enderecoUsuarioDTO.IdUsuario}', " +
 				$"logradouro = '{enderecoUsuarioDTO.Logradouro}', " +
 				$"numero = '{enderecoUsuarioDTO.Numero}', " +
@@ -45,12 +45,12 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			);
 		}
 
-		public DataTable SelecionarTodos()
+		public SelecionarRetornoDTO SelecionarTodos()
 		{
 			return querys.SelecionarTodos("ENDERECO_USUARIO");
 		}
 
-		public DataTable SelecionarComCondicao(string condicao)
+		public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
 		{
 			return querys.SelecionarComCondicao("ENDERECO_USUARIO", condicao);
 		}

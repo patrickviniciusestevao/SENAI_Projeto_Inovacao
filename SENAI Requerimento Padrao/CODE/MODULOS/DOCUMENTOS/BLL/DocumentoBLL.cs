@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
 using SENAI_Requerimento_Padrao.CODE.DTO;
 using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
@@ -10,33 +11,33 @@ namespace SENAI_Requerimento_Padrao.CODE.MODULOS.DOCUMENTOS.BLL
     {
         Querys querys = new Querys();
 
-        public void Inserir(DocumentoDTO documentoDTO)
+        public RetornoDTO Inserir(DocumentoDTO documentoDTO)
         {
-                querys.Inserir("DOCUMENTOS", "documento",
-                    $"'{documentoDTO.Documento}',"                 
-                    );
+                return querys.Inserir("DOCUMENTOS", "documento",
+                    $"'{documentoDTO.Documento}'"                 
+                );
         }
 
-        public void Excluir(DocumentoDTO documentoDTO)
+        public RetornoDTO Excluir(DocumentoDTO documentoDTO)
         {
-            querys.Excluir  ("DOCUMENTOS", "id_documento",  
+            return querys.Excluir  ("DOCUMENTOS", "id_documento",  
                     documentoDTO.IdDocumento.ToString()                    
                     );
         }
 
-        public void Alterar(DocumentoDTO documentoDTO)
+        public RetornoDTO Alterar(DocumentoDTO documentoDTO)
         {
-            querys.Alterar("DOCUMENTOS", "id_documento, documento")
+            return querys.Alterar("DOCUMENTOS",
                    $"documento = '{documentoDTO.Documento}'",
-				    "id_documento", documentoDTO.IdDocumento.ToString()
+                    "id_documento", documentoDTO.IdDocumento.ToString());
         }
 
-        public DataTable SelecionarTodos()
+        public SelecionarRetornoDTO SelecionarTodos()
 		{
 			return querys.SelecionarTodos("DOCUMENTO");
 		}
 
-		public DataTable SelecionarComCondicao(string condicao)
+		public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
 		{
 			return querys.SelecionarComCondicao("DOCUMENTO", condicao);
 		}

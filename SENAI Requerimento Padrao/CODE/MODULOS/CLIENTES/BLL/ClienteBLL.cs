@@ -10,13 +10,13 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
         AcessoBancoDados bd;
 		Querys querys = new Querys();
 
-		public void Inserir(ClienteDTO clienteDTO)
+		public RetornoDTO Inserir(ClienteDTO clienteDTO)
 		{
-				// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
-				string nome = querys.TrocarAspas(clienteDTO.NomeCompleto);
-				string nome_social = querys.TrocarAspas(clienteDTO.NomeSocial);
+			// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
+			string nome = querys.TrocarAspas(clienteDTO.NomeCompleto);
+			string nome_social = querys.TrocarAspas(clienteDTO.NomeSocial);
 
-			querys.Inserir("CLIENTE", "id_categoria_cliente, url_foto_usuario, nome_completo, matricula, nome_social, cpf, rg, orgao_emissor, email, situacao",
+			return querys.Inserir("CLIENTE", "id_categoria_cliente, url_foto_usuario, nome_completo, matricula, nome_social, cpf, rg, orgao_emissor, email, situacao",
 					"'" + clienteDTO.IdCategoria + "'," +
 					"'" + clienteDTO.Url + "','" + nome + "'," +
 					"'" + clienteDTO.Matricula + "'," +
@@ -29,18 +29,18 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 					);
 		}
 
-		public void Excluir(ClienteDTO clienteDTO)
+		public RetornoDTO Excluir(ClienteDTO clienteDTO)
 		{
-			querys.Excluir("CLIENTE", "id_cliente", "'" + clienteDTO.IdCliente + "'");
+			return querys.Excluir("CLIENTE", "id_cliente", "'" + clienteDTO.IdCliente + "'");
 		}
 
-		public void Alterar(ClienteDTO clienteDTO)
+		public RetornoDTO Alterar(ClienteDTO clienteDTO)
 		{
-				// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
-				string nome = querys.TrocarAspas(clienteDTO.NomeCompleto);
-				string nome_social = querys.TrocarAspas(clienteDTO.NomeSocial);
+			// Se houver aspas, coloque mais uma para evitar possíveis erros no banco
+			string nome = querys.TrocarAspas(clienteDTO.NomeCompleto);
+			string nome_social = querys.TrocarAspas(clienteDTO.NomeSocial);
 
-			querys.Alterar("CLIENTE", 
+			return querys.Alterar("CLIENTE", 
 				" id_categoria_cliente = '" + clienteDTO.IdCategoria + "'," +
 				" url_foto_usuario = '" + clienteDTO.Url + "'," +
 				" nome_completo = '" + nome + "'," +
@@ -52,17 +52,17 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				" email = '" + clienteDTO.Email + "'", "id_cliente", clienteDTO.IdCliente.ToString());
 		}
 
-		public DataTable SelecionarTodos()
+		public SelecionarRetornoDTO SelecionarTodos()
 		{
 			return querys.SelecionarTodos("CLIENTE");
 		}
 
-		public DataTable SelecionarComFiltro(ClienteDTO clienteDTO)
+		public SelecionarRetornoDTO SelecionarComFiltro(ClienteDTO clienteDTO)
 		{
 			return querys.SelecionarComCondicao("CLIENTE", "id_cliente like '" + clienteDTO.IdCliente + "%'");
 		}
 
-		public DataTable SelecionarComCondicao(string condicao)
+		public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
 		{
 			return querys.SelecionarComCondicao("CLIENTE", condicao);
 		}

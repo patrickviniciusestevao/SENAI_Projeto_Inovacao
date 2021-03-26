@@ -8,29 +8,29 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
     {
         Querys querys = new Querys();
 
-        public void Inserir(CategoriaClienteDTO categoriaClienteDTO)
+        public RetornoDTO Inserir(CategoriaClienteDTO categoriaClienteDTO)
         {
-            querys.Inserir("CATEGORIA_CLIENTE", "categoria_cliente", "'"+ categoriaClienteDTO.CategoriaCliente +"'");
+            return querys.Inserir("CATEGORIA_CLIENTE", "categoria_cliente", "'"+ categoriaClienteDTO.CategoriaCliente +"'");
         }
-        public void Excluir(CategoriaClienteDTO categoriaClienteDTO)
+        public RetornoDTO Excluir(CategoriaClienteDTO categoriaClienteDTO)
         {
-            querys.Excluir("CATEGORIA_CLIENTE", "id_categoria_cliente", "'" + categoriaClienteDTO.IdCategoriaCliente + "'");
+            return querys.Excluir("CATEGORIA_CLIENTE", "id_categoria_cliente", "'" + categoriaClienteDTO.IdCategoriaCliente + "'");
         }
-        public void Alterar(CategoriaClienteDTO categoriaClienteDTO)
+        public RetornoDTO Alterar(CategoriaClienteDTO categoriaClienteDTO)
         {
-            querys.Alterar("CATEGORIA_CLIENTE","categoria_cliente = '"+ categoriaClienteDTO.CategoriaCliente +"'","id_categoria_cliente", categoriaClienteDTO.IdCategoriaCliente.ToString());
+            return querys.Alterar("CATEGORIA_CLIENTE","categoria_cliente = '"+ categoriaClienteDTO.CategoriaCliente +"'","id_categoria_cliente", categoriaClienteDTO.IdCategoriaCliente.ToString());
         }
-        public DataTable SelecionarTodos()
+        public SelecionarRetornoDTO SelecionarTodos()
         {
             return querys.SelecionarTodos("CATEGORIA_CLIENTE");
         }
 
-        public DataTable SelecionarComFiltro(CategoriaClienteDTO categoriaClienteDTO)
+        public SelecionarRetornoDTO SelecionarComFiltro(CategoriaClienteDTO categoriaClienteDTO)
         {
             return querys.SelecionarComCondicao("CATEGORIA_CLIENTE", "id_categoria_cliente like '" + categoriaClienteDTO.IdCategoriaCliente + "%'");
         }
 
-        public DataTable SelecionarComCondicao(string condicao)
+        public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
         {
             return querys.SelecionarComCondicao("CATEGORIA_CLIENTE", condicao);
         }

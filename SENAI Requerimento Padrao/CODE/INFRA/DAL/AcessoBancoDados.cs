@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
-using System.Windows.Forms;
+using SENAI_Requerimento_Padrao.CODE.DTO;
 
 namespace SENAI_Requerimento_Padrao.CODE.DAL
 {
@@ -18,14 +13,16 @@ namespace SENAI_Requerimento_Padrao.CODE.DAL
 		private MySqlDataReader dr;
 		private MySqlCommandBuilder cb;
 
-		private String server = "mysql743.umbler.com";
-		private String user = "devsenai";
-		private String database = "db_requerimento";
-		private String port = "41890";
-		private String password = "JQAU_57l_B#ob";
+		private String server = "localhost";
+		private String user = "root";
+		private String database = "TesteCrud";
+		private String port = "3306";
+		private String password = "root";
 
-		public void Conectar()
+		public RetornoDTO Conectar()
 		{
+			RetornoDTO retorno = new RetornoDTO();
+
 			string connStr = String.Format("server={0}; User Id={1}; database={2}; port={3}; password={4}; pooling=false", server, user, database, port, password);
 			try
 			{
@@ -34,19 +31,26 @@ namespace SENAI_Requerimento_Padrao.CODE.DAL
 					conn.Close();
 				}
 				conn = new MySqlConnection(connStr);
+
+				retorno.codigo = 0;
+				retorno.mensagem = "Conexão feita com sucesso!";
 			}
-			catch (Exception ex)
+			catch (MySqlException exception)
 			{
-				MessageBox.Show("Não foi possível conectar ao banco: " + ex.ToString());
+				retorno.codigo = exception.ErrorCode;
+				retorno.mensagem = exception.Message;
 			}
 			finally
 			{
 				conn.Close();
 			}
+
+			return retorno;
 		}
 
-		public void ExecutarComandoSQL(string comandoSql)
+		public RetornoDTO ExecutarComandoSQL(string comandoSql)
 		{
+			RetornoDTO retorno = new RetornoDTO();
 			try
 			{
 				conn.Open();
@@ -56,15 +60,21 @@ namespace SENAI_Requerimento_Padrao.CODE.DAL
 					MySqlCommand comando = new MySqlCommand(comandoSql, conn);
 					comando.ExecuteNonQuery();
 				}
+
+				retorno.codigo = 0;
+				retorno.mensagem = "Comando efetuado com sucesso!";
 			}
-			catch (Exception ex)
+			catch (MySqlException exception)
 			{
-				Console.WriteLine(ex.ToString());
+				retorno.codigo = exception.Number;
+				retorno.mensagem = exception.Message;
 			}
 			finally
 			{
 				conn.Close();
 			}
+
+			return retorno;
 		}
 
 		public void Fechar()
@@ -72,13 +82,31 @@ namespace SENAI_Requerimento_Padrao.CODE.DAL
 			conn.Close();
         }
 
-		public DataTable RetDataTable(string sql)
+		public SelecionarRetornoDTO RetDataTable(string sql)
 		{
-			data = new DataTable();
-			da = new MySqlDataAdapter(sql, conn);
-			cb = new MySqlCommandBuilder(da);
-			da.Fill(data);
-			return data;
+			SelecionarRetornoDTO retorno = new SelecionarRetornoDTO();
+			try
+			{
+				data = new DataTable();
+				da = new MySqlDataAdapter(sql, conn);
+				cb = new MySqlCommandBuilder(da);
+				da.Fill(data);
+
+				retorno.codigo = 0;
+				retorno.mensagem = "Leitura feita com sucesso!";
+				retorno.tabela = data;
+			}
+			catch (MySqlException exception)
+			{
+				retorno.codigo = exception.Number;
+				retorno.mensagem = exception.Message;
+				retorno.tabela = new DataTable();
+			}
+			finally
+			{
+				conn.Close();
+			}
+			return retorno;
 		}
 
 		public MySqlDataReader RetDataReader(string sql)

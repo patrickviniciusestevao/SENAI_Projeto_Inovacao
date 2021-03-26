@@ -10,9 +10,9 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
     {
 		Querys querys = new Querys();
 
-		public void Inserir(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
+		public RetornoDTO Inserir(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
 		{
-			querys.Inserir("REQUERIMENTO_USUARIO", "id_requerimento, id_usuario, data_cadastro, acao, justificativa_cancelamento",
+			return querys.Inserir("REQUERIMENTO_USUARIO", "id_requerimento, id_usuario, data_cadastro, acao, justificativa_cancelamento",
 				$"'{requerimentoUsuarioDTO.IdRequerimento}', " +
 				$"'{requerimentoUsuarioDTO.IdUsuario}', " +
 				$"'{requerimentoUsuarioDTO.DataCadastro}', " +
@@ -21,14 +21,14 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			);
 		}
 
-		public void Excluir(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
+		public RetornoDTO Excluir(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
 		{
-			querys.Excluir("REQUERIMENTO_USUARIO", "id_requerimento_usuario", requerimentoUsuarioDTO.IdRequerimentoUsuario.ToString());
+			return querys.Excluir("REQUERIMENTO_USUARIO", "id_requerimento_usuario", requerimentoUsuarioDTO.IdRequerimentoUsuario.ToString());
 		}
 
-		public void Alterar(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
+		public RetornoDTO Alterar(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
 		{
-			querys.Alterar("REQUERIMENTO_USUARIO",
+			return querys.Alterar("REQUERIMENTO_USUARIO",
 				$"id_requerimento = '{requerimentoUsuarioDTO.IdRequerimento}', " +
 				$"id_usuario = '{requerimentoUsuarioDTO.IdUsuario}', " +
 				$"data_cadastro = '{requerimentoUsuarioDTO.DataCadastro}', " +
@@ -37,12 +37,13 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				"id_requerimento_usuario", requerimentoUsuarioDTO.IdRequerimentoUsuario.ToString()
 			);
 		}
-		public DataTable SelecionarTodos()
+		
+		public SelecionarRetornoDTO SelecionarTodos()
 		{
 			return querys.SelecionarTodos("REQUERIMENTO_USUARIO");
 		}
 
-		public DataTable SelecionarComCondicao(string condicao)
+		public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
 		{
 			return querys.SelecionarComCondicao("REQUERIMENTO_USUARIO", condicao);
 		}

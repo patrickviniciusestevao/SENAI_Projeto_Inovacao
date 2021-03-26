@@ -2,147 +2,114 @@
 using System.Data;
 using System.Windows.Forms;
 using SENAI_Requerimento_Padrao.CODE.DAL;
+using SENAI_Requerimento_Padrao.CODE.DTO;
 
 namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
 {
-	class Querys
-	{
-        AcessoBancoDados bd;
+    class Querys
+    {
+        AcessoBancoDados bd = new AcessoBancoDados();
         public string TrocarAspas(string nome)
         {
             return nome.Replace("'", "''");
         }
-        public void Inserir(string tabela, string colunas, string valores)
-		{
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
 
-                string comando = "INSERT INTO " + tabela + "(" + colunas + ") " +
-                     "values (" + valores + ")";
+        public RetornoDTO Inserir(string tabela, string colunas, string valores)
+        { 
+            RetornoDTO retorno = bd.Conectar();
 
-                bd.ExecutarComandoSQL(comando);
-            }
-            catch (Exception excecao)
+            if (retorno.codigo != 0)
             {
-                MessageBox.Show("Erro ao tentar inserir: " + excecao);
+                return retorno;
             }
-            finally
-            {
-                bd.Fechar();
-            }
+
+            string comando = "INSERT INTO " + tabela + "(" + colunas + ") " +
+                    "values (" + valores + ")";
+
+            return bd.ExecutarComandoSQL(comando);
         }
 
-        public void Excluir(string tabela, string coluna_id, string valor_id)
+        public RetornoDTO Excluir(string tabela, string coluna_id, string valor_id)
         {
-            try
+            RetornoDTO retorno = bd.Conectar();
+
+            if (retorno.codigo != 0)
             {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-                string comando = "" +
-                    "DELETE FROM "+ tabela +" where "+ coluna_id + " = '" + valor_id + "'";
-                bd.ExecutarComandoSQL(comando);
+                return retorno;
             }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao tentar Excluir: " + excecao.ToString());
-            }
-            finally
-            {
-                bd.Fechar();
-            }
+
+            string comando = "" +
+                "DELETE FROM " + tabela + " where " + coluna_id + " = '" + valor_id + "'";
+            return bd.ExecutarComandoSQL(comando);
         }
 
-        public void Alterar(string tabela, string valores, string coluna_id, string valor_id)
+        public RetornoDTO Alterar(string tabela, string valores, string coluna_id, string valor_id)
         {
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
+            RetornoDTO retorno = bd.Conectar();
 
-                string comando =
-                    "UPDATE "+ tabela + " set " +
-                    valores + 
-                    " where " + coluna_id + " = '" + valor_id + "'";
+            if (retorno.codigo != 0)
+            {
+                return retorno;
+            }
 
-                bd.ExecutarComandoSQL(comando);
-            }
-            catch (Exception excecao)
-            {
-                MessageBox.Show("Erro ao alterar: " + excecao);
-            }
-            finally
-            {
-                bd.Fechar();
-            }
+            string comando =
+                "UPDATE " + tabela + " set " +
+                valores +
+                " where " + coluna_id + " = '" + valor_id + "'";
+
+            return bd.ExecutarComandoSQL(comando);
         }
 
-        public DataTable SelecionarTodos(string tabela)
+        public SelecionarRetornoDTO SelecionarTodos(string tabela)
         {
-            DataTable dt = new DataTable();
-            try
-            {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-                dt = bd.RetDataTable("Select * from "+ tabela +"");
-            }
-            catch (Exception excecao)
-            {
-                Console.WriteLine("Erro ao tentar selecionar dados: " + excecao);
-            }
-            finally
-            {
-                bd.Fechar();
-            }
+            RetornoDTO verificacao = bd.Conectar();
 
-            return dt;
+            if (verificacao.codigo != 0)
+            {
+                SelecionarRetornoDTO retorno = new SelecionarRetornoDTO();
+                retorno.codigo = verificacao.codigo;
+                retorno.mensagem = verificacao.mensagem;
+                retorno.tabela = new DataTable();
+
+                return retorno;
+            }
+            
+            return bd.RetDataTable("Select * from " + tabela + "");
         }
 
-        public DataTable SelecionarComCondicao(string tabela, string condicao)
+        public SelecionarRetornoDTO SelecionarComCondicao(string tabela, string condicao)
         {
-            DataTable dataTable = new DataTable();
+            RetornoDTO verificacao = bd.Conectar();
 
-            try
+            if (verificacao.codigo != 0)
             {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-                dataTable = bd.RetDataTable("Select * from "+ tabela + " where " + condicao);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar com condição" + ex.ToString());
-            }
-            finally
-            {
-                bd.Fechar();
+                SelecionarRetornoDTO retorno = new SelecionarRetornoDTO();
+                retorno.codigo = verificacao.codigo;
+                retorno.mensagem = verificacao.mensagem;
+                retorno.tabela = new DataTable();
+
+                return retorno;
             }
 
-            return dataTable;
+            return bd.RetDataTable("Select * from " + tabela + " where " + condicao);
         }
 
-        public DataTable SelecionarTodosComInnerJoin(string primeira_tabela, string segunda_tabela, string coluna_primeira, string coluna_segunda)
+        public SelecionarRetornoDTO SelecionarTodosComInnerJoin(string primeira_tabela, string segunda_tabela, string coluna_primeira, string coluna_segunda)
         {
-            DataTable dataTable = new DataTable();
+            RetornoDTO verificacao = bd.Conectar();
 
-            try
+            if (verificacao.codigo != 0)
             {
-                bd = new AcessoBancoDados();
-                bd.Conectar();
-                dataTable = bd.RetDataTable($"SELECT * FROM {primeira_tabela} " +
-                                            $"INNER JOIN {segunda_tabela} " +
-                                            $"ON {primeira_tabela}.{coluna_primeira} = {segunda_tabela}.{coluna_segunda}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar com inner join" + ex.ToString());
-            }
-            finally
-            {
-                bd.Fechar();
-            }
+                SelecionarRetornoDTO retorno = new SelecionarRetornoDTO();
+                retorno.codigo = verificacao.codigo;
+                retorno.mensagem = verificacao.mensagem;
+                retorno.tabela = new DataTable();
 
-            return dataTable;
+                return retorno;
+            }
+            return bd.RetDataTable($"SELECT * FROM {primeira_tabela} " +
+                                   $"INNER JOIN {segunda_tabela} " +
+                                   $"ON {primeira_tabela}.{coluna_primeira} = {segunda_tabela}.{coluna_segunda}");
         }
     }
 }

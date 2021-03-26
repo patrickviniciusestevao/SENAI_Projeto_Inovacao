@@ -9,32 +9,32 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
     class ModalidadeBLL
     {
 		Querys querys = new Querys();
-		public void Inserir(ModalidadeDTO modalidadeDTO)
+		public RetornoDTO Inserir(ModalidadeDTO modalidadeDTO)
 		{
-			querys.Inserir("MODALIDADE", "modalidade",
+			return querys.Inserir("MODALIDADE", "modalidade",
 				$"'{modalidadeDTO.Modalidade}'");
 		}
 
-		public void Excluir(ModalidadeDTO modalidadeDTO)
+		public RetornoDTO Excluir(ModalidadeDTO modalidadeDTO)
 		{
-			querys.Excluir("MODALIDADE", "id_modalidade",
+			return querys.Excluir("MODALIDADE", "id_modalidade",
 				modalidadeDTO.IdModalidade.ToString());
 		}
 
-		public void Alterar(ModalidadeDTO modalidadeDTO)
+		public RetornoDTO Alterar(ModalidadeDTO modalidadeDTO)
 		{
-			querys.Alterar("MODALIDADE",
+			return querys.Alterar("MODALIDADE",
 				$"modalidade = '{modalidadeDTO.Modalidade}'",
 				"id_modalidade", modalidadeDTO.IdModalidade.ToString()
 			);
 		}
 
-		public DataTable SelecionarTodos()
+		public SelecionarRetornoDTO SelecionarTodos()
 		{
 			return querys.SelecionarTodos("MODALIDADE");
 		}
 
-		public DataTable SelecionarComCondicao(string condicao)
+		public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
 		{
 			return querys.SelecionarComCondicao("MODALIDADE", condicao);
 		}

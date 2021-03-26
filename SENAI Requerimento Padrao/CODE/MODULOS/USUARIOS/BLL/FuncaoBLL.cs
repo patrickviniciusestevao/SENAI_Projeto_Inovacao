@@ -9,53 +9,57 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 	class FuncaoBLL
 	{
 		Querys querys = new Querys();
-		public void Inserir(FuncaoDTO funcaoDTO)
+		public RetornoDTO Inserir(FuncaoDTO funcaoDTO)
 		{
-			int jaExisteUmaFuncao = querys.SelecionarComCondicao("FUNCAO", "funcao = '" + funcaoDTO.Funcao + "'").Rows.Count;
+			int jaExisteUmaFuncao = querys.SelecionarComCondicao("FUNCAO", "funcao = '" + funcaoDTO.Funcao + "'").tabela.Rows.Count;
 
 			// Comparando se já existe uma função
 			if (jaExisteUmaFuncao == 0)
 			{
 				string funcao = querys.TrocarAspas(funcaoDTO.Funcao);
 
-				querys.Inserir("FUNCAO", "funcao, nivel_permissao",
+				return querys.Inserir("FUNCAO", "funcao, nivel_permissao",
 					"'" + funcao + "'," +
 					"'" + funcaoDTO.NivelPermissao + "'"
 				);
 			}
 			else
 			{
-				MessageBox.Show("Já existe uma função com o mesmo nome");
+				RetornoDTO retorno = new RetornoDTO();
+				retorno.codigo = -1;
+				retorno.mensagem = "Já existe uma função com mesmo nome";
+
+				return retorno;
 			}
 		}
 
-		public void Excluir(FuncaoDTO funcaoDTO)
+		public RetornoDTO Excluir(FuncaoDTO funcaoDTO)
 		{
-			querys.Excluir("FUNCAO", "id_funcao", funcaoDTO.IdFuncao.ToString());
+			return querys.Excluir("FUNCAO", "id_funcao", funcaoDTO.IdFuncao.ToString());
 		}
 
-		public void Alterar(FuncaoDTO funcaoDTO)
+		public RetornoDTO Alterar(FuncaoDTO funcaoDTO)
 		{
 			string funcao = querys.TrocarAspas(funcaoDTO.Funcao);
 
-			querys.Alterar("FUNCAO",
+			return querys.Alterar("FUNCAO",
 				"funcao = '" + funcao + "'," +
 				"nivel_permissao = '" + funcaoDTO.NivelPermissao + "'",
 				"id_funcao", funcaoDTO.IdFuncao.ToString()
 			);
 		}
 
-		public DataTable SelecionarTodos()
+		public SelecionarRetornoDTO SelecionarTodos()
 		{
 			return querys.SelecionarTodos("FUNCAO");
 		}
 
-		public DataTable SelecionarComFiltro(FuncaoDTO funcaoDTO)
+		public SelecionarRetornoDTO SelecionarComFiltro(FuncaoDTO funcaoDTO)
 		{
 			return querys.SelecionarComCondicao("FUNCAO", "funcao like '" + funcaoDTO.Funcao + "%'");
 		}
 
-		public DataTable SelecionarComCondicao(string condicao)
+		public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
 		{
 			return querys.SelecionarComCondicao("FUNCAO", condicao);
 		}

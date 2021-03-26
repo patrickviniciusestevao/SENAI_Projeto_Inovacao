@@ -9,9 +9,9 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
     class RequerimentoBLL
     {
 		Querys querys = new Querys();
-		public void Inserir(RequerimentoDTO requerimentoDTO)
+		public RetornoDTO Inserir(RequerimentoDTO requerimentoDTO)
 		{
-			querys.Inserir("REQUERIMENTO", "id_modalidade_curso, item_requerimento, modulo_periodo, turno, informacoes_adicionais, data_hora_periodo, situacao",
+			return querys.Inserir("REQUERIMENTO", "id_modalidade_curso, item_requerimento, modulo_periodo, turno, informacoes_adicionais, data_hora_periodo, situacao",
 				$"'{requerimentoDTO.IdModalidadeCurso}'," +
 				$"'{requerimentoDTO.ItemRequerimento}'," +
 				$"'{requerimentoDTO.ModuloPeriodo}'," +
@@ -22,14 +22,14 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			);
 		}
 
-		public void Excluir(RequerimentoDTO requerimentoDTO)
+		public RetornoDTO Excluir(RequerimentoDTO requerimentoDTO)
 		{
-			querys.Excluir("REQUERIMENTO", "id_endereco_usuario", requerimentoDTO.IdRequerimento.ToString());
+			return querys.Excluir("REQUERIMENTO", "id_endereco_usuario", requerimentoDTO.IdRequerimento.ToString());
 		}
 
-		public void Alterar(RequerimentoDTO requerimentoDTO)
+		public RetornoDTO Alterar(RequerimentoDTO requerimentoDTO)
 		{
-			querys.Alterar("REQUERIMENTO", 
+			return querys.Alterar("REQUERIMENTO", 
 				$"id_modalidade_curso = '{requerimentoDTO.IdModalidadeCurso}'," +
 				$"item_requerimento = '{requerimentoDTO.ItemRequerimento}'," +
 				$"modulo_periodo = '{requerimentoDTO.ModuloPeriodo}'," +
@@ -41,12 +41,12 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			);
 		}
 
-		public DataTable SelecionarTodos()
+		public SelecionarRetornoDTO SelecionarTodos()
 		{
 			return querys.SelecionarTodos("REQUERIMENTO");
 		}
 
-		public DataTable SelecionarComCondicao(string condicao)
+		public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
 		{
 			return querys.SelecionarComCondicao("REQUERIMENTO", condicao);
 		}

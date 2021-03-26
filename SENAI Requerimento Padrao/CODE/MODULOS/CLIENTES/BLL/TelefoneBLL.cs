@@ -7,38 +7,37 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
     class TelefoneBLL
     {
-        AcessoBancoDados bd;
         Querys querys = new Querys();
-        public void Inserir(TelefoneDTO telefoneDTO)
+        public RetornoDTO Inserir(TelefoneDTO telefoneDTO)
         {
-            querys.Inserir("TELEFONE", "id_cliente, numero_telefone, whatsapp, categoria_telefone",
+            return querys.Inserir("TELEFONE", "id_cliente, numero_telefone, whatsapp, categoria_telefone",
                 "'" + telefoneDTO.IdCliente + "', " +
                     "'" + telefoneDTO.NumeroTelefone + "', " +
                     "'" + telefoneDTO.Whatsapp + "', " +
                     "'" + telefoneDTO.CategoriaTelefone + "'");
         }
-        public void Excluir(TelefoneDTO telefoneDTO)
+        public RetornoDTO Excluir(TelefoneDTO telefoneDTO)
         {
-            querys.Excluir("TELEFONE", "id_telefone", "'" + telefoneDTO.IdTelefone + "'");
+            return querys.Excluir("TELEFONE", "id_telefone", "'" + telefoneDTO.IdTelefone + "'");
         }
-        public void Alterar(TelefoneDTO telefoneDTO)
+        public RetornoDTO Alterar(TelefoneDTO telefoneDTO)
         {
-            querys.Alterar("TELEFONE",
+            return querys.Alterar("TELEFONE",
                 "id_cliente = '" + telefoneDTO.IdCliente + "', " +
                 "numero_telefone = '" + telefoneDTO.NumeroTelefone + "', " +
                 "whatsapp = '" + telefoneDTO.Whatsapp + "', " +
                 "categoria_telefone = '" + telefoneDTO.CategoriaTelefone + "'", 
                 "id_endereco", telefoneDTO.IdTelefone.ToString());
         }
-        public DataTable SelecionarTodos()
+        public SelecionarRetornoDTO SelecionarTodos()
         {
             return querys.SelecionarTodos("TELEFONE");
         }
-        public DataTable SelecionarComFiltro(TelefoneDTO telefoneDTO)
+        public SelecionarRetornoDTO SelecionarComFiltro(TelefoneDTO telefoneDTO)
         {
             return querys.SelecionarComCondicao("TELEFONE", "id_telefone like '" + telefoneDTO.IdTelefone + "%'");
         }
-        public DataTable SelecionarComCondicao(string condicao)
+        public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
         {
             return querys.SelecionarComCondicao("TELEFONE", condicao);
         }

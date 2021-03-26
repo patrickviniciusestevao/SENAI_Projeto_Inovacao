@@ -12,8 +12,8 @@ namespace SENAI_Requerimento_Padrao.CODE.GUI
 {
     public partial class TesteCRUD : Form
     {
-        FuncaoBLL funcaoBLL = new FuncaoBLL();
-        FuncaoDTO dataFuncao = new FuncaoDTO();
+        TelefoneUsuarioBLL bll = new TelefoneUsuarioBLL();
+        TelefoneUsuarioDTO data = new TelefoneUsuarioDTO();
         public TesteCRUD()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace SENAI_Requerimento_Padrao.CODE.GUI
 
         private void atualizarGrid()
         {
-            dataGrid.DataSource = funcaoBLL.SelecionarTodos();
+            dataGrid.DataSource = bll.SelecionarTodos().tabela;
         }
 
         private void carregarDados(object sender, EventArgs e)
@@ -31,15 +31,17 @@ namespace SENAI_Requerimento_Padrao.CODE.GUI
 
         private void atualizar(object sender, EventArgs e)
         {
-            dataFuncao.Funcao = "Gabriel";
-            dataFuncao.NivelPermissao = 3;
+            data.IdUsuario = 5;
+            data.NumeroTelefone = "39393393939";
+            data.Whatsapp = false;
+            data.CategoriaTelefone = "Casa";
 
             DataGridViewRow linhaAtual = dataGrid.CurrentRow;
 
             int indice = linhaAtual.Index;
-            dataFuncao.IdFuncao = Int32.Parse(dataGrid.Rows[indice].Cells[0].Value.ToString());
+            data.IdTelefoneUsuario = Int32.Parse(dataGrid.Rows[indice].Cells[0].Value.ToString());
 
-            funcaoBLL.Alterar(dataFuncao);
+            bll.Alterar(data);
 
             this.atualizarGrid();
         }
@@ -49,19 +51,28 @@ namespace SENAI_Requerimento_Padrao.CODE.GUI
             DataGridViewRow linhaAtual = dataGrid.CurrentRow;
 
             int indice = linhaAtual.Index;
-            dataFuncao.IdFuncao = Int32.Parse(dataGrid.Rows[indice].Cells[0].Value.ToString());
+            data.IdTelefoneUsuario = Int32.Parse(dataGrid.Rows[indice].Cells[0].Value.ToString());
 
-            funcaoBLL.Excluir(dataFuncao);
+            bll.Excluir(data);
 
             this.atualizarGrid();
         }
 
         private void inserir(object sender, EventArgs e)
         {
-            dataFuncao.Funcao = "Administrador";
-            dataFuncao.NivelPermissao = 1;
+            data.IdUsuario = 5;
+            data.NumeroTelefone = "95445960";
+            data.Whatsapp = true;
+            data.CategoriaTelefone = "Casa";
 
-            funcaoBLL.Inserir(dataFuncao);
+            RetornoDTO retornoInsercao = bll.Inserir(data);
+
+            if(retornoInsercao.codigo != 0)
+            {
+                MessageBox.Show(retornoInsercao.mensagem);
+            }
+
+            this.atualizarGrid();
         }
     }
 }

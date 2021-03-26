@@ -9,32 +9,32 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
     class CursoBLL
     {
 		Querys querys = new Querys();
-		public void Inserir(CursoDTO cursoDTO)
+		public RetornoDTO Inserir(CursoDTO cursoDTO)
 		{
-			querys.Inserir("CURSO", "nome_curso",
+			return querys.Inserir("CURSO", "nome_curso",
 				$"'{cursoDTO.NomeCurso}'");
 		}
 
-		public void Excluir(CursoDTO cursoDTO)
+		public RetornoDTO Excluir(CursoDTO cursoDTO)
 		{
-			querys.Excluir("CURSO", "id_curso",
+			return querys.Excluir("CURSO", "id_curso",
 				cursoDTO.IdCurso.ToString());
 		}
 
-		public void Alterar(CursoDTO cursoDTO)
+		public RetornoDTO Alterar(CursoDTO cursoDTO)
 		{
-			querys.Alterar("CURSO",
+			return querys.Alterar("CURSO",
 				$"nome_curso = '{cursoDTO.NomeCurso}'",
 				"id_curso", cursoDTO.IdCurso.ToString()
 			);
 		}
 
-		public DataTable SelecionarTodos()
+		public SelecionarRetornoDTO SelecionarTodos()
 		{
 			return querys.SelecionarTodos("CURSO");
 		}
 
-		public DataTable SelecionarComCondicao(string condicao)
+		public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
 		{
 			return querys.SelecionarComCondicao("CURSO", condicao);
 		}
