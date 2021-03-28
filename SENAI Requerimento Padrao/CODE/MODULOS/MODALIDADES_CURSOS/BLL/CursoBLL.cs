@@ -18,14 +18,14 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		public RetornoDTO Excluir(CursoDTO cursoDTO)
 		{
 			return querys.Excluir("CURSO", "id_curso",
-				cursoDTO.IdCurso.ToString());
+				cursoDTO.IdCurso);
 		}
 
 		public RetornoDTO Alterar(CursoDTO cursoDTO)
 		{
 			return querys.Alterar("CURSO",
 				$"nome_curso = '{cursoDTO.NomeCurso}'",
-				"id_curso", cursoDTO.IdCurso.ToString()
+				"id_curso", cursoDTO.IdCurso
 			);
 		}
 

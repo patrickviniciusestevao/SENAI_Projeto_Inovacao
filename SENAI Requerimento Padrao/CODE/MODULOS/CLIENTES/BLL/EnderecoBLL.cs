@@ -22,7 +22,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
         }
         public RetornoDTO Excluir(EnderecoDTO enderecoDTO)
         {
-            return querys.Excluir("ENDERECO", "id_endereco", "'" + enderecoDTO.IdEndereco + "'");
+            return querys.Excluir("ENDERECO", "id_endereco", enderecoDTO.IdEndereco);
         }
         public RetornoDTO Alterar(EnderecoDTO enderecoDTO)
         {
@@ -36,7 +36,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
                 "cidade = '" + enderecoDTO.Cidade + "', " +
                 "uf = '" + enderecoDTO.Uf + "'" +
                 "categoria_endereco = '" + enderecoDTO.CategoriaEndereco + "'",
-                "id_endereco", enderecoDTO.IdEndereco.ToString());
+                "id_endereco", enderecoDTO.IdEndereco);
         }
         public SelecionarRetornoDTO SelecionarTodos()
         {

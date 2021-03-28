@@ -14,11 +14,11 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
         }
         public RetornoDTO Excluir(CategoriaClienteDTO categoriaClienteDTO)
         {
-            return querys.Excluir("CATEGORIA_CLIENTE", "id_categoria_cliente", "'" + categoriaClienteDTO.IdCategoriaCliente + "'");
+            return querys.Excluir("CATEGORIA_CLIENTE", "id_categoria_cliente", categoriaClienteDTO.IdCategoriaCliente);
         }
         public RetornoDTO Alterar(CategoriaClienteDTO categoriaClienteDTO)
         {
-            return querys.Alterar("CATEGORIA_CLIENTE","categoria_cliente = '"+ categoriaClienteDTO.CategoriaCliente +"'","id_categoria_cliente", categoriaClienteDTO.IdCategoriaCliente.ToString());
+            return querys.Alterar("CATEGORIA_CLIENTE","categoria_cliente = '"+ categoriaClienteDTO.CategoriaCliente +"'","id_categoria_cliente", categoriaClienteDTO.IdCategoriaCliente);
         }
         public SelecionarRetornoDTO SelecionarTodos()
         {

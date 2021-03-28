@@ -15,7 +15,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			return querys.Inserir("REQUERIMENTO_USUARIO", "id_requerimento, id_usuario, data_cadastro, acao, justificativa_cancelamento",
 				$"'{requerimentoUsuarioDTO.IdRequerimento}', " +
 				$"'{requerimentoUsuarioDTO.IdUsuario}', " +
-				$"'{requerimentoUsuarioDTO.DataCadastro}', " +
+				$"NOW(), " +
 				$"'{requerimentoUsuarioDTO.Acao}', " +
 				$"'{requerimentoUsuarioDTO.JustificativaCancelamento}'"
 			);
@@ -23,7 +23,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
 		public RetornoDTO Excluir(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
 		{
-			return querys.Excluir("REQUERIMENTO_USUARIO", "id_requerimento_usuario", requerimentoUsuarioDTO.IdRequerimentoUsuario.ToString());
+			return querys.Excluir("REQUERIMENTO_USUARIO", "id_requerimento_usuario", requerimentoUsuarioDTO.IdRequerimentoUsuario);
 		}
 
 		public RetornoDTO Alterar(RequerimentoUsuarioDTO requerimentoUsuarioDTO)
@@ -31,10 +31,9 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			return querys.Alterar("REQUERIMENTO_USUARIO",
 				$"id_requerimento = '{requerimentoUsuarioDTO.IdRequerimento}', " +
 				$"id_usuario = '{requerimentoUsuarioDTO.IdUsuario}', " +
-				$"data_cadastro = '{requerimentoUsuarioDTO.DataCadastro}', " +
 				$"acao = '{requerimentoUsuarioDTO.Acao}', " +
 				$"justificativa_cancelamento = '{requerimentoUsuarioDTO.JustificativaCancelamento}'",
-				"id_requerimento_usuario", requerimentoUsuarioDTO.IdRequerimentoUsuario.ToString()
+				"id_requerimento_usuario", requerimentoUsuarioDTO.IdRequerimentoUsuario
 			);
 		}
 		

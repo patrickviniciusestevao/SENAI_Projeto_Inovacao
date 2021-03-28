@@ -18,7 +18,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
         }
         public RetornoDTO Excluir(TelefoneDTO telefoneDTO)
         {
-            return querys.Excluir("TELEFONE", "id_telefone", "'" + telefoneDTO.IdTelefone + "'");
+            return querys.Excluir("TELEFONE", "id_telefone", telefoneDTO.IdTelefone);
         }
         public RetornoDTO Alterar(TelefoneDTO telefoneDTO)
         {
@@ -27,7 +27,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
                 "numero_telefone = '" + telefoneDTO.NumeroTelefone + "', " +
                 "whatsapp = '" + telefoneDTO.Whatsapp + "', " +
                 "categoria_telefone = '" + telefoneDTO.CategoriaTelefone + "'", 
-                "id_endereco", telefoneDTO.IdTelefone.ToString());
+                "id_endereco", telefoneDTO.IdTelefone);
         }
         public SelecionarRetornoDTO SelecionarTodos()
         {

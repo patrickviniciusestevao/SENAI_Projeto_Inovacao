@@ -19,7 +19,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		public RetornoDTO Excluir(ModalidadeCursoDTO modalidadeCursoDTO)
 		{
 			return querys.Excluir("MODALIDADE_CURSO", "id_modalidade_curso",
-				modalidadeCursoDTO.IdModalidadeCurso.ToString());
+				modalidadeCursoDTO.IdModalidadeCurso);
 		}
 
 		public RetornoDTO Alterar(ModalidadeCursoDTO modalidadeCursoDTO)
@@ -27,7 +27,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			return querys.Alterar("MODALIDADE_CURSO",
 				$"id_modalidade = '{modalidadeCursoDTO.IdModalidade}', " +
 				$"id_curso = '{modalidadeCursoDTO.IdCurso}'",
-				"id_modalidade_curso", modalidadeCursoDTO.IdModalidadeCurso.ToString()
+				"id_modalidade_curso", modalidadeCursoDTO.IdModalidadeCurso
 			);
 		}
 

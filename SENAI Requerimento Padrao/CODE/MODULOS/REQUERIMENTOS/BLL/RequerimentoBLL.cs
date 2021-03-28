@@ -11,20 +11,20 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		Querys querys = new Querys();
 		public RetornoDTO Inserir(RequerimentoDTO requerimentoDTO)
 		{
-			return querys.Inserir("REQUERIMENTO", "id_modalidade_curso, item_requerimento, modulo_periodo, turno, informacoes_adicionais, data_hora_periodo, situacao",
-				$"'{requerimentoDTO.IdModalidadeCurso}'," +
-				$"'{requerimentoDTO.ItemRequerimento}'," +
-				$"'{requerimentoDTO.ModuloPeriodo}'," +
-				$"'{requerimentoDTO.Turno}'," +
-				$"'{requerimentoDTO.InformacoesAdicionais}'," +
-				$"'{requerimentoDTO.DataHoraPedido}'," +
+			return querys.Inserir("REQUERIMENTO", "id_modalidade_curso, item_requerimento, modulo_periodo, turno, informacoes_adicionais, data_hora_pedido, situacao",
+				$"'{requerimentoDTO.IdModalidadeCurso}', " +
+				$"'{requerimentoDTO.ItemRequerimento}', " +
+				$"'{requerimentoDTO.ModuloPeriodo}', " +
+				$"'{requerimentoDTO.Turno}', " +
+				$"'{requerimentoDTO.InformacoesAdicionais}', " +
+				$"NOW(), " +
 				$"'{requerimentoDTO.Situacao}'"
 			);
 		}
 
 		public RetornoDTO Excluir(RequerimentoDTO requerimentoDTO)
 		{
-			return querys.Excluir("REQUERIMENTO", "id_endereco_usuario", requerimentoDTO.IdRequerimento.ToString());
+			return querys.Excluir("REQUERIMENTO", "id_requerimento", requerimentoDTO.IdRequerimento);
 		}
 
 		public RetornoDTO Alterar(RequerimentoDTO requerimentoDTO)
@@ -37,7 +37,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				$"informacoes_adicionais = '{requerimentoDTO.InformacoesAdicionais}'," +
 				$"data_hora_pedido = '{requerimentoDTO.DataHoraPedido}'," +
 				$"situacao = '{requerimentoDTO.Situacao}'",
-				"id_requerimento", requerimentoDTO.IdRequerimento.ToString()
+				"id_requerimento", requerimentoDTO.IdRequerimento
 			);
 		}
 

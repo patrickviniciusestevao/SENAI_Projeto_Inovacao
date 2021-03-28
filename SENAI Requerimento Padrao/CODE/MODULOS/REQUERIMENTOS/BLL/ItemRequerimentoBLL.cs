@@ -20,16 +20,16 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
 		public RetornoDTO Excluir(ItemRequerimentoDTO itemRequerimentoDTO)
 		{
-			return querys.Excluir("ITEM_REQUERIMENTO", "item_requerimento", itemRequerimentoDTO.ItemRequerimento.ToString());
+			return querys.Excluir("ITEM_REQUERIMENTO", "item_requerimento", itemRequerimentoDTO.ItemRequerimento);
 		}
 
 		public RetornoDTO Alterar(ItemRequerimentoDTO itemRequerimentoDTO)
 		{
 			return querys.Alterar("ITEM_REQUERIMENTO",
-				$"funcao = '{itemRequerimentoDTO.IdFuncao}', " +
-				$"nivel_permissao = '{itemRequerimentoDTO.Nome}', " +
-				$"valor = '{itemRequerimentoDTO.Valor}'",
-				"id_funcao", itemRequerimentoDTO.ItemRequerimento.ToString()
+				$"id_funcao = '{itemRequerimentoDTO.IdFuncao}', " +
+				$"nome = '{itemRequerimentoDTO.Nome}', " +
+				$"valor = '{itemRequerimentoDTO.Valor}' ",
+				"item_requerimento", itemRequerimentoDTO.ItemRequerimento
 			);
 		}
 

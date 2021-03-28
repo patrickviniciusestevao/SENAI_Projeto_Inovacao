@@ -31,7 +31,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
 		public RetornoDTO Excluir(ClienteDTO clienteDTO)
 		{
-			return querys.Excluir("CLIENTE", "id_cliente", "'" + clienteDTO.IdCliente + "'");
+			return querys.Excluir("CLIENTE", "id_cliente", clienteDTO.IdCliente);
 		}
 
 		public RetornoDTO Alterar(ClienteDTO clienteDTO)
@@ -49,7 +49,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				" cpf = '" + clienteDTO.Cpf + "'," +
 				" rg = '" + clienteDTO.Rg + "'," +
 				" orgao_emissor = '" + clienteDTO.OrgaoEmissor + "'," +
-				" email = '" + clienteDTO.Email + "'", "id_cliente", clienteDTO.IdCliente.ToString());
+				" email = '" + clienteDTO.Email + "'", "id_cliente", clienteDTO.IdCliente);
 		}
 
 		public SelecionarRetornoDTO SelecionarTodos()

@@ -29,7 +29,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             return bd.ExecutarComandoSQL(comando);
         }
 
-        public RetornoDTO Excluir(string tabela, string coluna_id, string valor_id)
+        public RetornoDTO Excluir(string tabela, string coluna_id, int valor_id)
         {
             RetornoDTO retorno = bd.Conectar();
 
@@ -43,7 +43,7 @@ namespace SENAI_Requerimento_Padrao.CODE.FUNCTIONS
             return bd.ExecutarComandoSQL(comando);
         }
 
-        public RetornoDTO Alterar(string tabela, string valores, string coluna_id, string valor_id)
+        public RetornoDTO Alterar(string tabela, string valores, string coluna_id, int valor_id)
         {
             RetornoDTO retorno = bd.Conectar();
 

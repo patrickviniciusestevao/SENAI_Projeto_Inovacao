@@ -2,7 +2,7 @@
 using SENAI_Requerimento_Padrao.CODE.DTO;
 using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
-namespace SENAI_Requerimento_Padrao.CODE.MODULOS.CLIENTES.BLL
+namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
     class ClienteRequerimentoBLL
     {
@@ -17,13 +17,13 @@ namespace SENAI_Requerimento_Padrao.CODE.MODULOS.CLIENTES.BLL
 
         public RetornoDTO Excluir(ClienteRequerimentoDTO clienteRequerimentoDTO)
         {
-            return querys.Excluir("CLIENTE_REQUERIMENTO", "id_cliente_requerimento", "'" + clienteRequerimentoDTO.IdClienteRequerimento + "'");
+            return querys.Excluir("CLIENTE_REQUERIMENTO", "id_cliente_requerimento", clienteRequerimentoDTO.IdClienteRequerimento);
         }
         public RetornoDTO Alterar(ClienteRequerimentoDTO clienteRequerimentoDTO)
         {
             return querys.Alterar("CLIENTE_REQUERIMENTO", "id_cliente = '" + clienteRequerimentoDTO.IdCliente + "'," +
                 "id_requerimento = '" + clienteRequerimentoDTO.IdRequerimento + "'", 
-                "id_cliente_requerimento", clienteRequerimentoDTO.IdClienteRequerimento.ToString());
+                "id_cliente_requerimento", clienteRequerimentoDTO.IdClienteRequerimento);
         }
         public SelecionarRetornoDTO SelecionarTodos()
         {
@@ -31,7 +31,7 @@ namespace SENAI_Requerimento_Padrao.CODE.MODULOS.CLIENTES.BLL
         }
         public SelecionarRetornoDTO SelecionarComFiltro(ClienteRequerimentoDTO clienteRequerimentoDTO)
         {
-            return querys.SelecionarComCondicao("CLIENTE_REQUERIMENTO", "id_cliente_requerimento like '" + clienteRequerimentoDTO.IdClienteRequerimento + "%'");
+            return querys.SelecionarComCondicao("CLIENTE_REQUERIMENTO", "id_cliente_requerimento like '%" + clienteRequerimentoDTO.IdClienteRequerimento + "%'");
         }
         public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
         {

@@ -18,14 +18,14 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		public RetornoDTO Excluir(ModalidadeDTO modalidadeDTO)
 		{
 			return querys.Excluir("MODALIDADE", "id_modalidade",
-				modalidadeDTO.IdModalidade.ToString());
+				modalidadeDTO.IdModalidade);
 		}
 
 		public RetornoDTO Alterar(ModalidadeDTO modalidadeDTO)
 		{
 			return querys.Alterar("MODALIDADE",
 				$"modalidade = '{modalidadeDTO.Modalidade}'",
-				"id_modalidade", modalidadeDTO.IdModalidade.ToString()
+				"id_modalidade", modalidadeDTO.IdModalidade
 			);
 		}
 

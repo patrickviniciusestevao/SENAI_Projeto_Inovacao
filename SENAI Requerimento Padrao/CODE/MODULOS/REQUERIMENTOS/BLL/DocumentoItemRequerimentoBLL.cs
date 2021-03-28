@@ -19,7 +19,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		public RetornoDTO Excluir(DocumentoItemRequerimentoDTO documentoItemRequerimentoDTO)
 		{
 			return querys.Excluir("DOCUMENTO_ITEM_REQUERIMENTO", "id_documento_item_requerimento", 
-				documentoItemRequerimentoDTO.IdDocumentoItemRequerimento.ToString());
+				documentoItemRequerimentoDTO.IdDocumentoItemRequerimento);
 		}
 
 		public RetornoDTO Alterar(DocumentoItemRequerimentoDTO documentoItemRequerimentoDTO)
@@ -27,7 +27,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			return querys.Alterar("DOCUMENTO_ITEM_REQUERIMENTO",
 				$"id_documento = '{documentoItemRequerimentoDTO.IdDocumento}', " +
 				$"item_requerimento = '{documentoItemRequerimentoDTO.ItemRequerimento}'",
-				"id_documento_item_requerimento", documentoItemRequerimentoDTO.IdDocumentoItemRequerimento.ToString()
+				"id_documento_item_requerimento", documentoItemRequerimentoDTO.IdDocumentoItemRequerimento
 			);
 		}
 

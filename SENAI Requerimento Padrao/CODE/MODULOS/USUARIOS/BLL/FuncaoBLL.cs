@@ -35,7 +35,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 
 		public RetornoDTO Excluir(FuncaoDTO funcaoDTO)
 		{
-			return querys.Excluir("FUNCAO", "id_funcao", funcaoDTO.IdFuncao.ToString());
+			return querys.Excluir("FUNCAO", "id_funcao", funcaoDTO.IdFuncao);
 		}
 
 		public RetornoDTO Alterar(FuncaoDTO funcaoDTO)
@@ -45,7 +45,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			return querys.Alterar("FUNCAO",
 				"funcao = '" + funcao + "'," +
 				"nivel_permissao = '" + funcaoDTO.NivelPermissao + "'",
-				"id_funcao", funcaoDTO.IdFuncao.ToString()
+				"id_funcao", funcaoDTO.IdFuncao
 			);
 		}
 

@@ -27,7 +27,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		
 		public RetornoDTO Excluir(UsuarioDTO usuarioDTO)
 		{
-			return querys.Excluir("USUARIO", "id_usuario", usuarioDTO.IdUsuario.ToString()); 
+			return querys.Excluir("USUARIO", "id_usuario", usuarioDTO.IdUsuario); 
 		}
 		
 		public RetornoDTO Alterar(UsuarioDTO usuarioDTO)
@@ -43,7 +43,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 				$"email_institucional = '{usuarioDTO.EmailInstitucional}', " +
 				$"senha = '{usuarioDTO.Senha}', " +
 				$"situacao = '{usuarioDTO.Situacao}' ",
-				"id_usuario", usuarioDTO.IdUsuario.ToString());
+				"id_usuario", usuarioDTO.IdUsuario);
 		}
 
 		public SelecionarRetornoDTO SelecionarTodos()

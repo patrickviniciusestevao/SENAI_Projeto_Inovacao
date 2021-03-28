@@ -2,7 +2,7 @@
 using SENAI_Requerimento_Padrao.CODE.DTO;
 using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
-namespace SENAI_Requerimento_Padrao.CODE.MODULOS.CLIENTES.BLL
+namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
     class DocumentoClienteBLL
     {
@@ -13,21 +13,20 @@ namespace SENAI_Requerimento_Padrao.CODE.MODULOS.CLIENTES.BLL
             return querys.Inserir("DOCUMENTO_CLIENTE", "id_cliente, id_documento, data_cadastro, diretorio_arquivo", 
                 "'"+ documentoClienteDTO.IdCliente +"'," +
                 "'" + documentoClienteDTO.IdDocumento + "'," +
-                "'" + documentoClienteDTO.DataCadastro + "'," +
-                "'" + documentoClienteDTO.Diretorio_arquivo + "',");
+                " NOW()," +
+                "'" + documentoClienteDTO.DiretorioArquivo + "'");
         }
         public RetornoDTO Excluir(DocumentoClienteDTO documentoClienteDTO)
         {
-            return querys.Excluir("DOCUMENTO_CLIENTE","id_documento_cliente","'"+ documentoClienteDTO.IdDocumentoCliente +"'");
+            return querys.Excluir("DOCUMENTO_CLIENTE","id_documento_cliente", documentoClienteDTO.IdDocumentoCliente);
         }
         public RetornoDTO Alterar(DocumentoClienteDTO documentoClienteDTO)
         {
-            return querys.Alterar("DOCUMENTO_CLIENTE", 
-                "'" + documentoClienteDTO.IdCliente + "'," +
-                "'" + documentoClienteDTO.IdDocumento + "'," +
-                "'" + documentoClienteDTO.DataCadastro + "'," +
-                "'" + documentoClienteDTO.Diretorio_arquivo + "',", 
-                "id_documento_cliente", documentoClienteDTO.IdDocumentoCliente.ToString());
+            return querys.Alterar("DOCUMENTO_CLIENTE",
+                "id_cliente = '" + documentoClienteDTO.IdCliente + "'," +
+                "id_documento = '" + documentoClienteDTO.IdDocumento + "'," +
+                "diretorio_arquivo = '" + documentoClienteDTO.DiretorioArquivo + "'", 
+                "id_documento_cliente", documentoClienteDTO.IdDocumentoCliente);
         }
         public SelecionarRetornoDTO SelecionarTodos()
         {
@@ -35,7 +34,7 @@ namespace SENAI_Requerimento_Padrao.CODE.MODULOS.CLIENTES.BLL
         }
         public SelecionarRetornoDTO SelecionarComFiltro(DocumentoClienteDTO documentoClienteDTO)
         {
-            return querys.SelecionarComCondicao("DOCUMENTO_CLIENTE", "id_documento_cliente like '" + documentoClienteDTO.IdDocumentoCliente + "%'");
+            return querys.SelecionarComCondicao("DOCUMENTO_CLIENTE", "id_documento_cliente like '%" + documentoClienteDTO.IdDocumentoCliente + "%'");
         }
         public SelecionarRetornoDTO SelecionarComCondicao(string condicao)
         {

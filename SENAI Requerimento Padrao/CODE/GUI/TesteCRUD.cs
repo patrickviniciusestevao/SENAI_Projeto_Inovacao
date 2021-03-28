@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using SENAI_Requerimento_Padrao.CODE.BLL;
 using SENAI_Requerimento_Padrao.CODE.DTO;
@@ -12,8 +7,8 @@ namespace SENAI_Requerimento_Padrao.CODE.GUI
 {
     public partial class TesteCRUD : Form
     {
-        TelefoneUsuarioBLL bll = new TelefoneUsuarioBLL();
-        TelefoneUsuarioDTO data = new TelefoneUsuarioDTO();
+        DocumentoClienteBLL bll = new DocumentoClienteBLL();
+        DocumentoClienteDTO data = new DocumentoClienteDTO();
         public TesteCRUD()
         {
             InitializeComponent();
@@ -31,17 +26,21 @@ namespace SENAI_Requerimento_Padrao.CODE.GUI
 
         private void atualizar(object sender, EventArgs e)
         {
-            data.IdUsuario = 5;
-            data.NumeroTelefone = "39393393939";
-            data.Whatsapp = false;
-            data.CategoriaTelefone = "Casa";
+            data.IdCliente = 2;
+            data.IdDocumento = 2;
+            data.DiretorioArquivo = "https://";
 
             DataGridViewRow linhaAtual = dataGrid.CurrentRow;
 
             int indice = linhaAtual.Index;
-            data.IdTelefoneUsuario = Int32.Parse(dataGrid.Rows[indice].Cells[0].Value.ToString());
+            data.IdDocumentoCliente = Int32.Parse(dataGrid.Rows[indice].Cells[0].Value.ToString());
 
-            bll.Alterar(data);
+            RetornoDTO retornoAlterar = bll.Alterar(data);
+
+            if(retornoAlterar.codigo != 0)
+            {
+                MessageBox.Show(retornoAlterar.mensagem);
+            }
 
             this.atualizarGrid();
         }
@@ -51,7 +50,7 @@ namespace SENAI_Requerimento_Padrao.CODE.GUI
             DataGridViewRow linhaAtual = dataGrid.CurrentRow;
 
             int indice = linhaAtual.Index;
-            data.IdTelefoneUsuario = Int32.Parse(dataGrid.Rows[indice].Cells[0].Value.ToString());
+            data.IdDocumentoCliente = Int32.Parse(dataGrid.Rows[indice].Cells[0].Value.ToString());
 
             bll.Excluir(data);
 
@@ -60,10 +59,9 @@ namespace SENAI_Requerimento_Padrao.CODE.GUI
 
         private void inserir(object sender, EventArgs e)
         {
-            data.IdUsuario = 5;
-            data.NumeroTelefone = "95445960";
-            data.Whatsapp = true;
-            data.CategoriaTelefone = "Casa";
+            data.IdCliente = 2;
+            data.IdDocumento = 2;
+            data.DiretorioArquivo = "://";
 
             RetornoDTO retornoInsercao = bll.Inserir(data);
 

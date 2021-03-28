@@ -13,7 +13,7 @@ namespace SENAI_Requerimento_Padrao.CODE.DTO
         public int IdDocumentoCliente { get => id_documento_cliente; set => id_documento_cliente = value; }
         public int IdCliente { get => id_cliente; set => id_cliente = value; }
         public int IdDocumento { get => id_documento; set => id_documento = value; }
-        public string Diretorio_arquivo { get => diretorio_arquivo; set => diretorio_arquivo = value; }
+        public string DiretorioArquivo { get => diretorio_arquivo; set => diretorio_arquivo = value; }
         public DateTime DataCadastro { get => data_cadastro; set => data_cadastro = value; }
     }
 }
