@@ -63,9 +63,9 @@ namespace SENAI_Requerimento_Padrao.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icone_salvar {
+        internal static System.Drawing.Bitmap Clientes {
             get {
-                object obj = ResourceManager.GetObject("icone_salvar", resourceCulture);
+                object obj = ResourceManager.GetObject("Clientes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace SENAI_Requerimento_Padrao.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap imgFotoUsuario {
+        internal static System.Drawing.Bitmap Cursos {
             get {
-                object obj = ResourceManager.GetObject("imgFotoUsuario", resourceCulture);
+                object obj = ResourceManager.GetObject("Cursos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,149 @@ namespace SENAI_Requerimento_Padrao.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap imgFotoUsuario1 {
+        internal static System.Drawing.Bitmap Dashboard {
             get {
-                object obj = ResourceManager.GetObject("imgFotoUsuario1", resourceCulture);
+                object obj = ResourceManager.GetObject("Dashboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_btn_editar {
+            get {
+                object obj = ResourceManager.GetObject("img_btn_editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_btn_excluir {
+            get {
+                object obj = ResourceManager.GetObject("img_btn_excluir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_btn_whatsapp {
+            get {
+                object obj = ResourceManager.GetObject("img_btn_whatsapp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_editar {
+            get {
+                object obj = ResourceManager.GetObject("img_editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_editar_sem_borda {
+            get {
+                object obj = ResourceManager.GetObject("img_editar_sem_borda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_excluir {
+            get {
+                object obj = ResourceManager.GetObject("img_excluir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_excluir_sem_borda {
+            get {
+                object obj = ResourceManager.GetObject("img_excluir_sem_borda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_foto {
+            get {
+                object obj = ResourceManager.GetObject("img_foto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_salvar {
+            get {
+                object obj = ResourceManager.GetObject("img_salvar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_whatsapp {
+            get {
+                object obj = ResourceManager.GetObject("img_whatsapp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Itens_de_Requerimento {
+            get {
+                object obj = ResourceManager.GetObject("Itens_de_Requerimento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Novo_Requerimento {
+            get {
+                object obj = ResourceManager.GetObject("Novo_Requerimento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap senai_logomarca_fundo_escuro_21 {
+            get {
+                object obj = ResourceManager.GetObject("senai_logomarca_fundo_escuro_21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Usuário {
+            get {
+                object obj = ResourceManager.GetObject("Usuário", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,13 +1,11 @@
 ﻿using System.Data;
 using SENAI_Requerimento_Padrao.CODE.DTO;
-using SENAI_Requerimento_Padrao.CODE.DAL;
 using SENAI_Requerimento_Padrao.CODE.FUNCTIONS;
 
 namespace SENAI_Requerimento_Padrao.CODE.BLL
 {
 	class ClienteBLL
-    {
-        AcessoBancoDados bd;
+	{
 		Querys querys = new Querys();
 
 		public RetornoDTO Inserir(ClienteDTO clienteDTO)
@@ -40,7 +38,7 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 			string nome = querys.TrocarAspas(clienteDTO.NomeCompleto);
 			string nome_social = querys.TrocarAspas(clienteDTO.NomeSocial);
 
-			return querys.Alterar("CLIENTE", 
+			return querys.Alterar("CLIENTE",
 				" id_categoria_cliente = '" + clienteDTO.IdCategoria + "'," +
 				" url_foto_usuario = '" + clienteDTO.Url + "'," +
 				" nome_completo = '" + nome + "'," +
@@ -66,5 +64,10 @@ namespace SENAI_Requerimento_Padrao.CODE.BLL
 		{
 			return querys.SelecionarComCondicao("CLIENTE", condicao);
 		}
+
+		public SelecionarRetornoDTO SelecionarComCategoria()
+        {
+			return querys.SelecionarTodosComInnerJoin("CLIENTE", "CATEGORIA_CLIENTE", "id_categoria_cliente", "id_categoria_cliente");
+        }
 	}
 }
